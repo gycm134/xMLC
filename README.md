@@ -141,7 +141,7 @@ xMLC (Machine Learning Control) for taming nonlinear dynamics.
 ## Acknowledgments
 
 * The author thanks Thomas Duriez and Ruying Li for the great help they provided by sharing their own code.
-* The author also thanks Bernd R. Noack and Francois Lusseyran for their precious advice and guidance.
+* The author also thanks Bernd R. Noack (http://berndnoack.com/) and Francois Lusseyran (https://perso.limsi.fr/lussey/) for their precious advice and guidance.
 
 
 
