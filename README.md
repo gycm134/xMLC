@@ -8,6 +8,9 @@ Machine Learning Control.
 How to use the xMLC software.
 This software is based on a Genetic Programming framework to build control laws for dynamical systems.
 
+## Publications
+Cornejo Maceda, G. Y. (2021). Gradient-enriched machine learning control exemplified for shear flows in simulations and experiments. <i>PhD Thesis,</i> Université Paris-Saclay. URL: http://www.theses.fr/2021UPAST036/document
+
 ## Getting Started
 
 Unzip the tar.gz file.
