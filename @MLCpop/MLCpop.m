@@ -28,6 +28,7 @@ classdef MLCpop < handle
         evaluation
      % Individuals
         CreationOrder
+        Iteration
     end
 
     %% External methods
@@ -69,6 +70,7 @@ classdef MLCpop < handle
                 obj.operation{p}.type = 'random';
             end
             obj.CreationOrder = -1*ones(Nind,1);
+            obj.Iteration = -1*ones(Nind,1);
         end
     end
 end

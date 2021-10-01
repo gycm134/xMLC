@@ -34,7 +34,7 @@ function generate_population(MLC)
     end
 
 %% External evaluation
-  if strcmp(MLC.parameters.EvaluationFunction,'external')
+  if strcmp(MLC.parameters.ProblemType,'external')
     %Generation of the GenN_population.mat file for evaluation----------------------
       external_evaluation(MLC,0);
       fprintf('Evaluation can begin\n')

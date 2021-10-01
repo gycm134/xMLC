@@ -1,5 +1,6 @@
-function parameters = GMFM_parameters()
-	% GMFM_parameters sets the parameters for an GMFM problem.
+function parameters = LabViewExpe_parameters()
+	% Template parameter file to optimize control laws in experiments
+	% managed by LabView.
 	%
 	% Guy Y. Cornejo Maceda, 01/24/2020
 	%
@@ -13,11 +14,11 @@ function parameters = GMFM_parameters()
 
 %% Problem parameters
 % Problem
-    parameters.Name = 'GMFM'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
-    parameters.EvaluationFunction = 'GMFM'; % 'GMFM' or 'FP' or 'none'
-    parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
-    % Path for external evaluation
-    parameters.PathExt = '/Costs'; % For external evaluations
+    parameters.Name = 'LabViewExpe'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
+    parameters.EvaluationFunction = 'none'; % 'GMFM' or 'FP' or 'none'
+    parameters.ProblemType = 'LabView'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
+    % Path for external/LabView evaluation
+    parameters.PathExt = '~/Documents/Research/MLC/xMLC/LabViewExchangeFolder/'; % For external evaluations
     
         % Problem variables
         % The inputs and outputs are considered from the controller point
@@ -27,12 +28,12 @@ function parameters = GMFM_parameters()
         ProblemParameters.OutputNumber = 1; % Number of OutputNumber
         % Intputs - Number of sensors and time dependent functions
             % si(t)
-            ProblemParameters.NumberSensors = 4;
-            ProblemParameters.Sensors = {'a1','a2','a3','a4'}; % name in the problem
+            ProblemParameters.NumberSensors = 2;
+            ProblemParameters.Sensors = {'a1','a2'}; % name in the problem
             % hi(t)
-            ProblemParameters.NumberTimeDependentFunctions = 1; % sin(wt)... multifrequency-forcing
-            ProblemParameters.TimeDependentFunctions = {'0.5*cos(0.1*t)'}; % syntax in MATLAB/Octave
-             ProblemParameters.TimeDependentFunctions(2,:) = {'0.5*cos(0.1*t)'}; % syntax in the problem (if null then comment)
+            ProblemParameters.NumberTimeDependentFunctions = 0; % sin(wt)... multifrequency-forcing
+            ProblemParameters.TimeDependentFunctions = {}; % syntax in MATLAB/Octave
+%             ProblemParameters.TimeDependentFunctions{2,:} = {}; % syntax in the problem (if null then comment)
         ProblemParameters.InputNumber = ProblemParameters.NumberSensors+ProblemParameters.NumberTimeDependentFunctions; 
         % Control Syntax
         Sensors = cell(1,ProblemParameters.NumberSensors); %*
@@ -42,20 +43,12 @@ function parameters = GMFM_parameters()
         ControlSyntax = horzcat(Sensors,TDF); %*
         
         % Essential problem parameters
-            ProblemParameters.NPeriods = 25; % Number of periods
             ProblemParameters.T0 = 0; % Not always used
-            ProblemParameters.Tmax = 2*pi*ProblemParameters.NPeriods/1; % omega=1        % Evaluation - used in the *_problem.m file
+            ProblemParameters.Tmax = 150; % omega=1
             % Actuation limitation : [lower bound,upper bound]
             ProblemParameters.ActuationLimit = [-1,1];
-        % Maximum evaluation time otherwise returns an bad value
-        ProblemParameters.TmaxEv = 5; % otherwise parameters.BadValue is given
-        % Problem definition
-        ProblemParameters.NPointsPeriod = 51; % Number of points per period
-            time = linspace(ProblemParameters.T0,ProblemParameters.Tmax,...
-                ProblemParameters.NPointsPeriod*ProblemParameters.NPeriods+1);
-        ProblemParameters.dt = time(2)-time(1);
-        ProblemParameters.InitialCondition = [sqrt(0.1) 0 0 0]; % on the limit cycle of the unstable oscillator.
-        ProblemParameters.gamma = [0.01,0]; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
+         % Cost function penalization
+%         ProblemParameters.gamma = []; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
         
         % Round evaluation of control points and J
         ProblemParameters.RoundEval = 6;
@@ -100,7 +93,7 @@ function parameters = GMFM_parameters()
             ControlLaw.CstRange = [repmat([-1,1],ControlLaw.CstRegNumber,1)]; % Range of values of the random constants
             % Total number of registers
             ControlLaw.RegNumber = ControlLaw.VarRegNumber + ControlLaw.CstRegNumber;  %* % variable registers and constante registers (operands)
-
+            
             % Register initialization
                 NVR = ControlLaw.VarRegNumber; %*
                 RN = ControlLaw.RegNumber; %*
@@ -118,7 +111,7 @@ function parameters = GMFM_parameters()
                     r{p} = num2str(dC(p-NVR)*rand+minC(p-NVR)); %*
                 end %*
             ControlLaw.Registers = r; %*
-
+            
         % Control law estimation
         ControlLaw.ControlPointNumber = 1000;
         ControlLaw.SensorRange = [repmat([-2 2],ProblemParameters.NumberSensors,1)]; % Range for sensors
@@ -128,7 +121,7 @@ function parameters = GMFM_parameters()
             dR = Rmax-Rmin; %*
         ControlLaw.EvalTimeSample = rand(1,Nbpts)*ProblemParameters.Tmax; %*
         ControlLaw.ControlPoints = rand(ProblemParameters.NumberSensors,Nbpts).*dR+Rmin; %*
-        
+
     % Definition
     parameters.ControlLaw = ControlLaw; %*
 
@@ -145,7 +138,7 @@ function parameters = GMFM_parameters()
     % iterations of the operations when the test is not satisfied.
     parameters.MaxIterations = 10; % better around 100 (-> MaxInterations)
     % Reevaluate individuals (noise and experiment)
-    parameters.MultipleEvaluations = 0;
+    parameters.MultipleEvaluations = 1;
     % Stopping criterion
     parameters.Criterion = 'number of evaluations'; % (not yet)
     % Selection parameters

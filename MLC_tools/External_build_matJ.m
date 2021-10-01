@@ -15,7 +15,7 @@ function matJ = External_build_matJ(MLC_parameters,Gen)
 
 %% Parameters
     PopSize = MLC_parameters.PopulationSize;
-    PathExt = MLC_parameters.ProblemParameters.PathExt;
+    PathExt = MLC_parameters.PathExt;
     gamma = MLC_parameters.ProblemParameters.gamma;
     
 %% Allocation

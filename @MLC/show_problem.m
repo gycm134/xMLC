@@ -20,6 +20,10 @@ fprintf('\n')
 % Plot
 fprintf(['Name of the run : ',param.Name,'\n'])
 fprintf(['Problem to solve : ',param.EvaluationFunction,'\n'])
+fprintf(['Problem type : ',param.ProblemType,'\n'])
+if strcmp(param.ProblemType,'external') || strcmp(param.ProblemType,'LabView')
+    fprintf(['Problem type : ',param.ProblemType,'\n'])
+end
 fprintf(['   Number of actuators       : ',num2str(param.ProblemParameters.OutputNumber),'\n'])
 fprintf(['   Number of control inputs  : ',num2str(param.ProblemParameters.InputNumber),'\n'])
 fprintf('\n')

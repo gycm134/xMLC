@@ -15,9 +15,6 @@ function [cindiv1, cindiv2,pp] = crossover(individual_1,individual_2,MLC_paramet
     % Version
     isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
     
-%% Parameters
-    gamma = MLC_parameters.ProblemParameters.gamma;
-
 %% Arguments
   cindiv1 = MLCind;
   cindiv2 = MLCind;

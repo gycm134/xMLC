@@ -11,10 +11,10 @@ function evaluate_population(MLC,Gen)
     % CC-BY-SA
 
 %% Parameters
-    EvaluationFunction = MLC.parameters.EvaluationFunction;
-
+    ProblemType = MLC.parameters.ProblemType;
+    
 %% Test
-  if strcmp(EvaluationFunction,'external')
+  if strcmp(ProblemType,'external')
     fprintf('Evaluation is external (Fortran, experiment..)\n')
     fprintf(' Once the control laws are evaluated\n')
     fprintf(' run the complete_evaluation.m method.\n')

@@ -18,7 +18,7 @@ function [x,y] = convergence(MLC,Pareto,plt)
 %% Parameters
   NGen = MLC.generation;
   PopSize = MLC.parameters.PopulationSize;
-  gamma = MLC.parameters.ProblemParameters.gamma; NJcomponents = numel(gamma)+1;
+  NJcomponents = numel(MLC.table.individuals(1).cost(1,:))-1;
   % Plot the mean (or ...) of the different evaluation of one individual
       EstimatePerformance = MLC.parameters.ProblemParameters.EstimatePerformance;
 %   HowToPlot = 1; %1: mean, 2:worst

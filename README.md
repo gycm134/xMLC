@@ -115,6 +115,11 @@ See the CheatSheet.m file for a quick start.
 Version 0.10 - First GitHub release.
 If you experience compatibility issues with previous versions, please contact the author.
 
+Version 0.11 - Coupling with LabView - Not compatible with previous versions.
+The code can now be used with LabView experiments.
+Some properties have been modified, so the code is not directly compatible with previous versions.
+Contact the author for further informations.
+
 ## Author
 
 * **Guy Y. Cornejo Maceda** 

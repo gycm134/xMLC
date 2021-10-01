@@ -1,4 +1,4 @@
-function MLC_ind = evaluate_indiv(MLC_ind,MLC_parameters,visu)
+function MLC_ind = evaluate_indiv(MLC_ind,IdxGen,MLC_parameters,visu)
     % EVALUATE_INDIV Evaluates a MLCind object.
     % Evaluates the individual following some properties.
     % If multiple evaluations is set to 1 in the parameters, the individual
@@ -13,23 +13,30 @@ function MLC_ind = evaluate_indiv(MLC_ind,MLC_parameters,visu)
     % CC-BY-SA
 
 %% Arguments
-  if nargin<3
+  if nargin<4
       visu=0;
   end
 
 %% Parameters
-    actuation_limit = MLC_parameters.ProblemParameters.ActuationLimit;
     RoundEval = MLC_parameters.ProblemParameters.RoundEval;
     EvaluationFunction = MLC_parameters.EvaluationFunction;
-  
-%% Evaluation function
-  eval(['Plant=@',EvaluationFunction,'_problem;']);
-  
-%% Control : Definition, replacement and limitation
-    control_law = MLC_ind.control_law;
-    control_law = strrep_cl(MLC_parameters,control_law,2);
-%    control_law = limit_to(control_law,actuation_limit);
-% Should be done in the plant
+    ProblemType = MLC_parameters.ProblemType;
+    % Define gamma for LabView
+    Prop = fields(MLC_parameters.ProblemParameters);
+    if sum(strcmp(Prop,'gamma'))
+        gamma_all = [1,MLC_parameters.ProblemParameters.gamma];
+    else
+        gamma_all = 1;
+    end
+    
+%% Create the control law if needed (Is is useful?)
+if strcmp(ProblemType,'MATLAB')
+        % Evaluation function
+        eval(['Plant=@',EvaluationFunction,'_problem;']);
+        % Control : Definition, replacement and limitation
+        control_law = MLC_ind.control_law;
+        control_law = strrep_cl(MLC_parameters,control_law,2);
+end
    
 %% Evaluation
 if MLC_ind.cost{1}==-1 || MLC_parameters.MultipleEvaluations>0
@@ -39,11 +46,34 @@ if MLC_ind.cost{1}==-1 || MLC_parameters.MultipleEvaluations>0
     for p=1:NEvaluations
         % Evaluate
         tic;
-        J = Plant(control_law,MLC_parameters,visu);
         
-        % Bad value test
-        if isnan(J{1}) || isinf(J{1})
-            J{1} = MLC_parameters.BadValue;
+        switch ProblemType
+            case 'Dummy'
+                Jrand = rand;
+                J = {Jrand,Jrand};
+            case 'MATLAB'
+                J = Plant(control_law,MLC_parameters,visu);
+                % Bad value test
+                if isnan(J{1}) || isinf(J{1})
+                    J{1} = MLC_parameters.BadValue;
+                end
+            case 'LabView'
+                LabViewPath = MLC_parameters.PathExt;
+                % Create control law file
+                CreatefunctionLabview(MLC_parameters,MLC_ind,IdxGen);
+                fprintf('Waiting for J.txt.\n')
+                fprintf(['  ',LabViewPath,'\n'])
+                while not(exist([LabViewPath,'J.txt'],'file'))
+                    % Waiting for the file
+                end
+                fprintf(' Here it is!\n')
+                % Read and delete J.txt
+                Jtab = load([LabViewPath,'J.txt'],'-ascii');
+                if numel(Jtab)~=numel(gamma_all)
+                    error('Gamma is not defined well')
+                end
+                J = [sum(gamma_all.*Jtab),num2cell(Jtab)];
+                delete([LabViewPath,'J.txt']);
         end
         
         % Add value to MLC_indiv

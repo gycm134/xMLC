@@ -16,11 +16,13 @@ indiv_to_evaluate = pop.individuals(idx_to_evaluate);
   fprintf('Evaluation of generation %i :\n',pop.generation);
 %% Evaluation loop
 for p=1:numel(idx_to_evaluate)
+    idx = idx_to_evaluate(p);
+    gen = pop.generation;
     if MLC_parameters.verbose
-        fprintf('    Evaluation of individual %i/%i',idx_to_evaluate(p),MLC_parameters.PopulationSize)
+        fprintf('    Evaluation of individual %i/%i',idx,MLC_parameters.PopulationSize)
     end
 
-    MLC_table.individuals(indiv_to_evaluate(p)).evaluate_indiv(MLC_parameters);
+    MLC_table.individuals(indiv_to_evaluate(p)).evaluate_indiv([gen,idx],MLC_parameters);
 end
 
 %% Complete population
@@ -41,7 +43,9 @@ for p=1:numel(idx_to_evaluate)
     end
     
     pop.costs(idx_to_evaluate(p)) = J;
+    pop.Iteration (idx_to_evaluate(p)) = size(MLC_table.individuals(indiv_to_evaluate(p)).cost,1);
     MLC_table.costlist(indiv_to_evaluate(p))=J;
+    
 end
 
 end

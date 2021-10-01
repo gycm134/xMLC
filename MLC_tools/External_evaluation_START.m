@@ -11,7 +11,7 @@
 Initialization;
 %% Start
     mlc=MLC('MyProblem');
-    mlc.parameters.ProblemParameters.PathExt='';
+    mlc.parameters.PathExt='';
     
 %% Generate population
     mlc.generate_population;

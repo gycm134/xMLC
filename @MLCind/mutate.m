@@ -13,10 +13,7 @@ function [mindiv,instr] = mutate(indiv,MLC_parameters)
 %% MATLAB options
     % Version
     isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
-    
-%% Parameters
-    gamma = MLC_parameters.ProblemParameters.gamma;
-    
+       
 %% Mutation rate
   mutation_type = MLC_parameters.MutationType;
   switch mutation_type

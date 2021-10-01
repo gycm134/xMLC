@@ -1,5 +1,5 @@
 function parameters = tanh_parameters()
-	% default parameters for the toy problem.
+	% Default parameters for the tanh problem.
 	%
 	% Guy Y. Cornejo Maceda, 02/04/2021
 	%
@@ -14,9 +14,10 @@ function parameters = tanh_parameters()
 %% Problem parameters
 % Problem
     parameters.Name = 'Tanh_fitting'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
-    parameters.EvaluationFunction = 'tanh'; % external for fortran or experimental
+    parameters.EvaluationFunction = 'tanh'; % 'GMFM' or 'FP' or 'none'
+    parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
     % Path for external evaluation
-    ProblemParameters.PathExt = '/Costs'; % For external evaluations
+    parameters.PathExt = '/Costs'; % For external evaluations
     
         % Problem variables
         % The inputs and outputs are considered from the controller point
@@ -40,6 +41,13 @@ function parameters = tanh_parameters()
         for p=1:ProblemParameters.NumberTimeDependentFunctions,TDF{p} = ['h(',num2str(p),')'];end %*
         ControlSyntax = horzcat(Sensors,TDF); %*
         
+        % Essential problem parameters
+            ProblemParameters.T0 = -2; % Care control points
+            ProblemParameters.Tmax = 2;
+            % Actuation limitation : [lower bound,upper bound]
+            ProblemParameters.ActuationLimit = [-inf,inf];
+            % Actuation limitation : [lower bound,upper bound]
+            ProblemParameters.ActuationLimit = [-inf,inf];
         % Evaluation - used in the *_problem.m file
         % Maximum evaluation time otherwise returns an bad value
         ProblemParameters.TmaxEv = 5; % otherwise parameters.BadValue is given
@@ -49,10 +57,8 @@ function parameters = tanh_parameters()
         ProblemParameters.dt = 1e-4;
         % number of initial conditions
         ProblemParameters.InitialCondition = 1;
-        % Actuation limitation : [lower bound,upper bound]
-        ProblemParameters.ActuationLimit = [-inf,inf];
         % Cost function penalization
-        ProblemParameters.gamma = [];% J = Ja + gamma(1)*Jb + gamma(2)*Jc
+%         ProblemParameters.gamma = [];% J = Ja + gamma(1)*Jb + gamma(2)*Jc
 
         % Round evaluation of control points and J
         ProblemParameters.RoundEval = 6;

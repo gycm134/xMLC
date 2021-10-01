@@ -1,5 +1,5 @@
 function parameters = FixedPoint_parameters()
-	% GMFM_parameters sets the parameters for an GMFM problem.
+	% Parameters for the stabilization of a limit cycle to its fixed point.
 	%
 	% Guy Y. Cornejo Maceda, 01/24/2020
 	%
@@ -14,9 +14,10 @@ function parameters = FixedPoint_parameters()
 %% Problem parameters
 % Problem
     parameters.Name = 'FP'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
-    parameters.EvaluationFunction = 'FixedPoint'; % external for fortran or experimental
+    parameters.EvaluationFunction = 'FixedPoint'; % 'GMFM' or 'FP' or 'none'
+    parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
     % Path for external evaluation
-    ProblemParameters.PathExt = '/Costs'; % For external evaluations
+    parameters.PathExt = '/Costs'; % For external evaluations
     
         % Problem variables
         % The inputs and outputs are considered from the controller point
@@ -40,20 +41,21 @@ function parameters = FixedPoint_parameters()
         for p=1:ProblemParameters.NumberTimeDependentFunctions,TDF{p} = ['h(',num2str(p),')'];end %*
         ControlSyntax = horzcat(Sensors,TDF); %*
         
+        % Essential problem parameters
+            ProblemParameters.NPeriods = 25; % Number of periods
+            ProblemParameters.T0 = 0; % Not always used
+            ProblemParameters.Tmax = 2*pi*ProblemParameters.NPeriods/1; % omega=1
+            % Actuation limitation : [lower bound,upper bound]
+            ProblemParameters.ActuationLimit = [-1,1];
         % Evaluation - used in the *_problem.m file
         % Maximum evaluation time otherwise returns an bad value
         ProblemParameters.TmaxEv = 5; % otherwise bad
         % Problem definition
         ProblemParameters.NPointsPeriod = 51; % Number of points per period
-        ProblemParameters.NPeriods = 25; % Number of periods
-        ProblemParameters.T0 = 0; % Not always used
-        ProblemParameters.Tmax = 2*pi*ProblemParameters.NPeriods/1; % omega=1
             time = linspace(ProblemParameters.T0,ProblemParameters.Tmax,...
                 ProblemParameters.NPointsPeriod*ProblemParameters.NPeriods+1);
         ProblemParameters.dt = time(2)-time(1);
         ProblemParameters.InitialCondition = sqrt(0.1)*[1 0;0 1;-1 0;0 -1]; % Four symmetrical
-        % Actuation limitation : [lower bound,upper bound]
-        ProblemParameters.ActuationLimit = [-1,1];
         % Cost function penalization
         ProblemParameters.gamma = [0.01]; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
         

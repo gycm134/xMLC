@@ -14,9 +14,6 @@ function new_individual = create_indiv(new_individual,MLC_parameters,first)
     % Version
     isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
     
-%% Parameters
-    gamma = MLC_parameters.ProblemParameters.gamma;
-
 %% Arguments
 if nargin <3
     first=0;
