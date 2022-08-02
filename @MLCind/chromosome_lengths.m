@@ -7,7 +7,7 @@ function le = chromosome_lengths(indiv)
     %
     % See also best_individual, best_individuals
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Gives back the lengths of chromosome and EIchromosome

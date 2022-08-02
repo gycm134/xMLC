@@ -56,13 +56,6 @@ function [mindiv,instr] = mutate(indiv,MLC_parameters)
     mindiv.control_law = read(MLC_parameters,m_chromosome); % control_law
     mindiv.EI.chromosome = EI_mchro; % effective instructions - chromosome
     mindiv.EI.indices = indices; % effective instructions - indices
-  % hash function
-    if isOctave
-        hashvalue = hash('MD5',mat2str(mindiv.chromosome)); % Octave
-    else
-        hashvalue = DataHash(mindiv.chromosome); % Matlab
-    end
-    mindiv.hash = hex2num(hashvalue(1:16));
   % controller numerical equivalency
     evaluation_time = MLC_parameters.ControlLaw.EvalTimeSample;
     control_points = MLC_parameters.ControlLaw.ControlPoints;

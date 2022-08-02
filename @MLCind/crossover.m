@@ -8,7 +8,7 @@ function [cindiv1, cindiv2,pp] = crossover(individual_1,individual_2,MLC_paramet
     %
     % See also MLCind, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
     
 %% MATLAB options
@@ -107,13 +107,6 @@ end
   cindiv1.control_law = read(MLC_parameters,cchro1);
   cindiv1.EI.chromosome = EI_cchro_1;
   cindiv1.EI.indices = indices_1;
-  % hash function
-  if isOctave
-      hashvalue = hash('MD5',mat2str(cindiv1.chromosome)); % Octave
-  else
-      hashvalue = DataHash(cindiv1.chromosome); % MATLAB
-  end
-  cindiv1.hash = hex2num(hashvalue(1:16));
   % controller numerical equivalency
   evaluation_time = MLC_parameters.ControlLaw.EvalTimeSample;
   control_points = MLC_parameters.ControlLaw.ControlPoints;
@@ -129,13 +122,6 @@ end
   cindiv2.control_law = read(MLC_parameters,cchro2);
   cindiv2.EI.chromosome = EI_cchro_2;
   cindiv2.EI.indices = indices_2;
-  % hash function
-  if isOctave
-      hashvalue = hash('MD5',mat2str(cindiv2.chromosome)); % Octave
-  else
-      hashvalue = DataHash(cindiv2.chromosome); % MATLAB
-  end
-  cindiv2.hash = hex2num(hashvalue(1:16));
   % controller numerical equivalency
   evaluation_time = MLC_parameters.ControlLaw.EvalTimeSample;
   control_points = MLC_parameters.ControlLaw.ControlPoints;

@@ -10,7 +10,7 @@ function matJ = External_build_matJ(MLC_parameters,Gen)
     %
     % See also external_evaluation, External_evaluation_CONTINUE, External_evaluation_END.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters

@@ -15,7 +15,7 @@ function Jout=best_individual(MLC,GEN,visu)
     %
     % See also best_individuals, give, chromosome.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 %% Parameters
 % Not used here.

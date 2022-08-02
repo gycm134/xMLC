@@ -5,7 +5,7 @@ function plotindiv(MLC,Idx)
     %
     % See also MLCind, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 %% Individual and evaluation function
 Indiv = MLC.table.individuals(Idx);

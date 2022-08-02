@@ -4,15 +4,14 @@ classdef MLCind < handle
     % It defines a control law. Its matrix representation (chromosome),
     % its costs, its string expression (control_law), the reduced matrix
     % containing only the effective instructions, the number of times it
-    % appeared during a run, the evaluation time, an hash representation, a
-    % numerical equivalent (control_points) and a reference to another
-    % individual if needed
+    % appeared during a run, the evaluation time, a numerical equivalent
+    % (control_points) and a reference to another individual if needed.
     %
     % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, create_indiv, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
     %% Properties
@@ -23,7 +22,6 @@ classdef MLCind < handle
         EI
         occurrences
         evaluation_time
-        hash
         control_points
         ref
     end
@@ -53,7 +51,6 @@ classdef MLCind < handle
             obj.EI = [];
             obj.occurrences = 1;
             obj.evaluation_time=[];
-            obj.hash = 0;
             obj.control_points = [];
             obj.ref = -1;
         end

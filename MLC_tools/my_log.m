@@ -5,7 +5,7 @@ function q=my_log(x)
     %
     % See also my_div, my_log, opset.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 protection = 1e-3;

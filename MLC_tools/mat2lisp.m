@@ -8,7 +8,7 @@ function expr_lisp = mat2lisp(MLC_parameters,chromosome)
     %
     % See also read, readmylisp_to_evaluate.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% initialization

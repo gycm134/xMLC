@@ -8,7 +8,7 @@ function save_octave(MLC,AuxName)
     %
     % See also MLC, go, @MLC/load_MLC.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters
@@ -51,7 +51,6 @@ function save_octave(MLC,AuxName)
         individuals(q).EI = MLC.table.individuals(q).EI;
         individuals(q).occurrences = MLC.table.individuals(q).occurrences;
         individuals(q).evaluation_time = MLC.table.individuals(q).evaluation_time;
-        individuals(q).hash = MLC.table.individuals(q).hash;
         individuals(q).control_points = MLC.table.individuals(q).control_points;
         individuals(q).ref = MLC.table.individuals(q).ref;
     end
@@ -60,7 +59,6 @@ function save_octave(MLC,AuxName)
     % Number
         Octable.number = MLC.table.number;
     % Individual information
-        Octable.hashlist = MLC.table.hashlist;
         Octable.control_points = MLC.table.control_points;
         Octable.costlist = MLC.table.costlist;
     MLC_Octave.Octable = Octable;

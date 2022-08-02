@@ -7,7 +7,7 @@ function new_individual = create_indiv(new_individual,MLC_parameters,first)
     %
     % See also MLCind, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
     
 %% MATLAB options
@@ -49,13 +49,6 @@ end
 	new_individual.control_law = control_law;
 	new_individual.EI = EI;
 	new_individual.occurrences = 1;
-	% hash function
-    if isOctave
-        hashvalue = hash('MD5',mat2str(new_individual.chromosome)); % Octave
-    else
-        hashvalue = DataHash(new_individual.chromosome); % Matlab
-    end
-	new_individual.hash = hex2num(hashvalue(1:16));
 	% controller numerical equivalency
 	evaluation_time = MLC_parameters.ControlLaw.EvalTimeSample;
 	control_points = MLC_parameters.ControlLaw.ControlPoints;

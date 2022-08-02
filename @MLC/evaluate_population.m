@@ -7,7 +7,7 @@ function evaluate_population(MLC,Gen)
     %
     % See also evaluate_population, evolve_population
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters

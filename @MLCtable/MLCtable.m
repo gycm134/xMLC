@@ -1,6 +1,6 @@
 classdef MLCtable < handle
     % MLCtable Data base of all the individuals of the MLC object.
-    % It contain the properties : individuals, number, hashlist, control_points,
+    % It contain the properties : individuals, number, control_points,
     % costlist, non_redundant.
     % The property individual is MLCind array containing all the individuals.
     %
@@ -8,7 +8,7 @@ classdef MLCtable < handle
     %
     % See also MLC, MLCpop, MLCind.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
     %% Properties
@@ -19,7 +19,6 @@ classdef MLCtable < handle
         % Number
           number
         % Individual information
-          hashlist
           control_points
           costlist
     end
@@ -42,7 +41,6 @@ classdef MLCtable < handle
               individuals(Nind) = ind;
             obj.individuals = individuals;
             obj.number = 0;
-            obj.hashlist = zeros(Nind,1);
             Nep = parameters.ControlLaw.ControlPointNumber;
             MI = parameters.ProblemParameters.OutputNumber;
             obj.control_points = NaN(Nind,Nep*MI);

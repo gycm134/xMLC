@@ -5,7 +5,7 @@ function idx=find_bad_individuals(pop,MLC_parameters)
     %
     % See also replace_individuals, clean, remove_bad_individuals.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 idx = find(pop.costs >= MLC_parameters.BadValue);

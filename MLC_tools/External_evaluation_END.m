@@ -7,7 +7,7 @@ function External_evaluation_END(gen)
     %
     % See also external_evaluation_CONTINUE, External_evaluation_START.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %End_LGP_script

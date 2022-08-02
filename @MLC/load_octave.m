@@ -8,7 +8,7 @@ function MLC = load_octave(MLC,Name,AuxName)
     %
     % See also MLC, go, @MLC/save_MLC.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 %% Load 
     if nargin<3,LoadName='MLC';else,LoadName=AuxName;end
@@ -49,7 +49,6 @@ function MLC = load_octave(MLC,Name,AuxName)
       indiv.EI = tmp.MLC_Octave.Octable.individuals(q).EI;
       indiv.occurrences = tmp.MLC_Octave.Octable.individuals(q).occurrences;
       indiv.evaluation_time = tmp.MLC_Octave.Octable.individuals(q).evaluation_time;
-      indiv.hash = tmp.MLC_Octave.Octable.individuals(q).hash;
       indiv.control_points = tmp.MLC_Octave.Octable.individuals(q).control_points;
       indiv.ref = tmp.MLC_Octave.Octable.individuals(q).ref;
       MLC.table.individuals(q) = indiv;
@@ -58,7 +57,6 @@ function MLC = load_octave(MLC,Name,AuxName)
     % Number
       MLC.table.number = tmp.MLC_Octave.Octable.number;
     % Individual information
-      MLC.table.hashlist = tmp.MLC_Octave.Octable.hashlist;
       MLC.table.costlist = tmp.MLC_Octave.Octable.costlist;
       MLC.table.control_points = tmp.MLC_Octave.Octable.control_points;
     % Generation

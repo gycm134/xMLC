@@ -4,7 +4,7 @@ function CL_evolution(MLC,SensorsRange)
     % Guy Y. Cornejo Maceda, 2022/07/01
 
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
     
 %% MATLAB options

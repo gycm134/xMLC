@@ -9,7 +9,7 @@ function MLC_ind = evaluate_indiv(MLC_ind,IdxGen,MLC_parameters,visu)
     %
     % See also MLCind, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Arguments

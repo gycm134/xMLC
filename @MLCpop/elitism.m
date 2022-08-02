@@ -6,7 +6,7 @@ function [N_indivs,new_pop] = elitism(new_pop,pop,MLC_parameters,MLC_table)
     %
     % See also crossover, mutate, evolve_pop.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters

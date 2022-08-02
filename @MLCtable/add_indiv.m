@@ -10,7 +10,7 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
     %
     % See also MLC, MLCpop, MLCind.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters
@@ -25,7 +25,7 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
   end
 
 %% Look for redundant
-  index_indiv = MLC_table.find_indiv(indiv); % same hash function = same matrix = same individual
+  index_indiv = MLC_table.find_indiv(indiv); % same matrix = same individual
   redundant = MLC_table.find_redundant(indiv);
       if not(redundant) && isempty(index_indiv) % if it's a new individual or if it is not already in the base (necessary for bad individuals)
         MLC_table.non_redundant = [MLC_table.non_redundant,MLC_table.number+1];
@@ -35,7 +35,6 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
       indiv.ref = redundant;
       MLC_table.individuals(MLC_table.number+1)=indiv;
       MLC_table.number = MLC_table.number+1;
-      MLC_table.hashlist(MLC_table.number) = indiv.hash;
       MLC_table.control_points(MLC_table.number,:) = indiv.control_points;
       MLC_table.costlist(MLC_table.number) = indiv.cost{1};
       idx = MLC_table.number;

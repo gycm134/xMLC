@@ -6,7 +6,7 @@ function idx = find_bad_preeval_individuals(pop,MLC_table,idx_bad_indivs)
     %
     % See also clean, replace_individuals.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Bad individuals

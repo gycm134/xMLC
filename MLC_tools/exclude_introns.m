@@ -7,7 +7,7 @@ function [new_indiv,indices,submat]=exclude_introns(MLC_parameters,chromosome)
     %
     % See also create_indiv, chromosome.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Operators characteristics

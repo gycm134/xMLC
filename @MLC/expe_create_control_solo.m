@@ -8,7 +8,7 @@ function b_output=expe_create_control_solo(MLC,gen,IND)
   %
   % See also expe_create_control_time, expe_create_control_select.
 
-  % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+  % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
   % The MIT License (MIT)
 
 %% Control law

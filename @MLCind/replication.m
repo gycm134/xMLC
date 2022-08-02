@@ -6,7 +6,7 @@ function rep_indiv = replication(indiv)
     %
     % See also crossover, mutate.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 rep_indiv = indiv;

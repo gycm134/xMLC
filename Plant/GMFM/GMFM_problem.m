@@ -11,7 +11,7 @@ function J_out=GMFM_problem(Arrayb,parameters,visu)
     %
     % See also read, mat2lisp, simplify_my_LISP.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
     % The MIT License (MIT)
 
 %% Parameters
