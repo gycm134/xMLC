@@ -3,12 +3,12 @@ function CreatefunctionLabview(MLC_parameters,MLC_ind,IdxGen)
 % Creates the LabViewControlLaw.txt file in Path/
 % The control law is post-processed for LabView format
 %
-% Guy Y. Cornejo Maceda, 11/14/2019
+% Guy Y. Cornejo Maceda, 2022/07/01
 %
 % See also SIN, COS, TheOtherFunction.
 
-% Copyright: 2019 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-% CC-BY-SA
+% Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+% The MIT License (MIT)
 
 %% Parameters
     LabViewPath = MLC_parameters.PathExt;

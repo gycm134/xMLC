@@ -5,12 +5,12 @@ function pop = sort_pop(pop)
     % instructions.
     % To be updated..
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also Elitism, mutate, evolve_pop.
 
 % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-% CC-BY-SA
+% The MIT License (MIT)
 
 %% Sorting
   sorting_table = horzcat(pop.costs,pop.chromosome_lengths);

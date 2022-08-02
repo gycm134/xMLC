@@ -4,12 +4,12 @@ function [cindiv1, cindiv2,pp] = crossover(individual_1,individual_2,MLC_paramet
     % Gives two new MLCind objects and a cell array containing where the cuts
     % on the matrices have been made and how the two offsprings have been reconstructed.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLCind, evaluate_indiv.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
     
 %% MATLAB options
     % Version

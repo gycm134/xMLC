@@ -3,12 +3,12 @@ function [mindiv,instr] = mutate(indiv,MLC_parameters)
     % Takes one MLCind object as argument and parameters.
     % Gives the new mutated MLCind and the line that mutated.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLCind, evaluate_indiv.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % The MIT License (MIT)
     
 %% MATLAB options
     % Version
@@ -19,8 +19,10 @@ function [mindiv,instr] = mutate(indiv,MLC_parameters)
   switch mutation_type
       case 'classic'
           pm = MLC_parameters.MutationRate;
-      case 'at_least_one'
-          pm = 1/size(indiv.chromosome,1);
+      case 'number_per_matrix'
+          pm = MLC_parameters.MutationNumber/size(indiv.chromosome,1);
+      otherwise
+          error('MutationType not defined correctly')
   end
 
 %% Mutated individual (m_individual)

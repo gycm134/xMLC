@@ -6,12 +6,12 @@ function matJ = External_build_matJ(MLC_parameters,Gen)
     % Thus the file GenXIndY.dat contains two floats (Ja and Jb) corresponding
     % to the cost of individual in line Y in the GenXpopulation.mat and generation X.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also external_evaluation, External_evaluation_CONTINUE, External_evaluation_END.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     PopSize = MLC_parameters.PopulationSize;

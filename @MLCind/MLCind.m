@@ -8,12 +8,12 @@ classdef MLCind < handle
     % numerical equivalent (control_points) and a reference to another
     % individual if needed
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, create_indiv, evaluate_indiv.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
     %% Properties
     properties
@@ -21,7 +21,7 @@ classdef MLCind < handle
         cost
         control_law
         EI
-        occurences
+        occurrences
         evaluation_time
         hash
         control_points
@@ -51,7 +51,7 @@ classdef MLCind < handle
             obj.cost = {-1};
             obj.control_law = {};
             obj.EI = [];
-            obj.occurences = 1;
+            obj.occurrences = 1;
             obj.evaluation_time=[];
             obj.hash = 0;
             obj.control_points = [];

@@ -6,12 +6,12 @@ function b_output=expe_create_control_time(MLC,gen,IND)
   % The control laws are all appended a last a given time.
   % A relaxing time between the control laws is set in T_pause.
   %
-  % Guy Y. Cornejo Maceda, 07/18/2020
+  % Guy Y. Cornejo Maceda, 2022/07/01
   %
   % See also expe_create_control_solo, expe_create_control_select.
 
   % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-  % CC-BY-SA
+  % The MIT License (MIT)
 
 %% Initilization
     % Name

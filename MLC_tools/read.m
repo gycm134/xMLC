@@ -1,12 +1,12 @@
  function expr = read(MLC_parameters,chromosome,to_export)
     % READ translates a chromosome in a string expression.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also mat2lisp, readmylisp_to_evaluate, simplify_my_LISP.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Arguments
     if nargin<3,to_export=0;end

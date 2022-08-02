@@ -1,13 +1,16 @@
 function CL_evolution(MLC,SensorsRange)
-    % Sensors, operations and constants distribution through the population and
-    % the generations
+    % Sensors distribution through the population and generations.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
 
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
-
+    % The MIT License (MIT)
+    
+%% MATLAB options
+    % Version
+    isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+    
 %% Parameters
     PopSize = MLC.parameters.PopulationSize;
     InputNumber = MLC.parameters.ProblemParameters.InputNumber;
@@ -92,17 +95,21 @@ end
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:NGEN;    
         ax.XMinorGrid = 'on';
-        xticks(0:NGEN)
-        xticklabels(0:NGEN)
+        end
+        set(gca,'xtick',0:NGEN)
+        set(gca,'xticklabel',0:NGEN)
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:NSensors;    
         ax.YMinorGrid = 'on';
-        yticks(0:NSensors)
-        yticklabels([])
+        end
+        set(gca,'ytick',0:NSensors)
+        set(gca,'xticklabel',[])
     % Labels
         xlabel('Generation','Interpreter','latex')
         ylabel('Sensor','Interpreter','latex')

@@ -1,12 +1,12 @@
 function ope = choose_operation(GeneticProbabilities)
     %CHOOSE_OPERATION choose a random operation
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also @MLCpop/mutate, @MLCpop/crossover.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Operators probability
   pc = GeneticProbabilities(1);

@@ -4,12 +4,12 @@ function pop = clean(pop,MLC_parameters,MLC_table,pop_old,idx_bad_values)
     % Those tests are done until the population is filled only with adequate individuals.
     % The indices in idx_bad_values are cleaned.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also pretesting, find_bad_individuals, replace_individuals.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Initialization
 	PopSize = MLC_parameters.PopulationSize;
@@ -32,10 +32,10 @@ function pop = clean(pop,MLC_parameters,MLC_table,pop_old,idx_bad_values)
         idx = find_bad_preeval_individuals(pop,MLC_table,idx_bad_values); %logical
     % If there is no wrong indivuals, there is nothing to replace.
         if not(isempty(idx))
-            fprintf('%i pre-evaluated individuals to be removed\n',length(idx))
+            fprintf('%i pre-evaluated individuals to be removed.\n',length(idx))
         else
             ContinueCleanPreEval=0;
-            fprintf('No pre-evaluated individuals to be removed')
+            fprintf('No pre-evaluated individuals to be removed.\n')
         end
             
     while ContinueCleanPreEval
@@ -47,10 +47,10 @@ function pop = clean(pop,MLC_parameters,MLC_table,pop_old,idx_bad_values)
             
         % If there is no wrong indivuals, there is nothing to replace.
             if not(isempty(idx))
-                fprintf('%i pre-evaluated individuals to be removed\n',length(idx))
+                fprintf('%i pre-evaluated individuals to be removed.\n',length(idx))
             else
                 ContinueCleanPreEval=0;
-                fprintf('No pre-evaluated individuals to be removed')
+                fprintf('No pre-evaluated individuals to be removed.\n')
             end
     end
 

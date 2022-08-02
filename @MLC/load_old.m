@@ -5,12 +5,12 @@ function MLC=load_old(MLC,folder,str)
     % 1. mlc.load('name_of_my_run');
     % 2. mlc.load('_my_folder','name_of_my_run');
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, go, @MLC/load.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Check which case
   if nargin < 3

@@ -6,12 +6,12 @@ function chromosome(MLC,GenList,IndList)
     % To have the chromosome of the 7th individual of the 3rd generation:
     %     mlc.chromosome(2,7);
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also best_individual, give, chromosome.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
  
 %% Test
     % Number of generations

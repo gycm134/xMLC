@@ -2,12 +2,16 @@ function CL_descriptions(MLC,GENS)
     % Sensors, operations and constants distribution through the population and
     % the generations
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
 
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
+%% MATLAB options
+    % Version
+    isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+    
 %% Parameters
     PopSize = MLC.parameters.PopulationSize;
     InputNumber = MLC.parameters.ProblemParameters.InputNumber;
@@ -86,9 +90,11 @@ for geni = GENS
     % Bar
     barb=barh(-0.5+(1:PopSize),sum(SSi,2),1);
     % Colormap and axis
-        barb.FaceColor='flat';
+%        barb.FaceColor='flat';
+         set(barb,'FaceColor','flat')
 %         CMP = flip(hot(MAXSS2_plus1)); % For future versions
-        barb.FaceColor = [1,0,0];
+        set(barb,'FaceColor',[1,0,0])
+%        barb.FaceColor = [1,0,0];
         colormap( flip( hot( max(SSi(:))+1 ) ) )
         axis([0,MAXSS2_plus1,0,PopSize])
         grid on
@@ -96,17 +102,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:5*ceil(MAXSS2_plus1/5);    
         ax.XMinorGrid = 'on';
-        xticks(0:5:5*ceil(MAXSS2_plus1/5))
-        xticklabels(0:5:5*ceil(MAXSS2_plus1/5))
+        end
+        set(gca,'xtick',0:5*ceil(MAXSS2_plus1/5))
+        set(gca,'xticklabel',0:5*ceil(MAXSS2_plus1/5))
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('\#sensor','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -138,17 +148,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:InputNumber;    
         ax.XMinorGrid = 'on';
-        xticks(0:5:InputNumber)
-        xticklabels(0:5:InputNumber)
+        end
+        set(gca,'xtick',0:InputNumber)
+        set(gca,'xticklabel',0:InputNumber)
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('Sensor','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -180,9 +194,9 @@ for geni = GENS
     % Bar
     barb=bar(-0.5+(1:InputNumber),sum(SSi,1),0.5);
     % Colormap and axis
-        barb.FaceColor='flat';
+        set(barb,'FaceColor','flat');
 %         CMP = flip(hot(MAXSS1_plus1));
-        barb.FaceColor = [0,0,0];
+        set(barb,'FaceColor',[0,0,0]);
         colormap( flip( hot( max(SSi(:))+1 ) ) )
         axis([0,InputNumber,0,MAXSS1_plus1])
         grid on
@@ -190,17 +204,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:InputNumber;    
         ax.XMinorGrid = 'on';
-        xticks(0:5:InputNumber)
-        xticklabels(0:5:InputNumber)
+        end
+        set(gca,'xtick',0:InputNumber)
+        set(gca,'xticklabel',0:InputNumber)
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:5*floor(MAXSS1_plus1/5);    
         ax.YMinorGrid = 'on';
-        yticks(0:5:5*floor(MAXSS1_plus1/5))
-        yticklabels(0:5:5*floor(MAXSS1_plus1/5))
+        end
+        set(gca,'ytick',0:5*round(MAXSS1_plus1/5))
+        set(gca,'yticklabel',0:5*round(MAXSS1_plus1/5))
     % Labels
         xlabel('Sensor','Interpreter','latex')
         ylabel('\#use','Interpreter','latex')
@@ -250,9 +268,9 @@ for geni = GENS
     % Bar
         barb=barh(-0.5+(1:PopSize),sum(OTi,2),1);
     % Colormap and axis
-        barb.FaceColor='flat';
+        set(barb,'FaceColor','flat');
 %         CMP = flip(hot(MAXSS2_plus1));
-        barb.FaceColor = [1,0,0];   
+        set(barb,'FaceColor',[1,0,0]);   
         colormap( flip( hot( max(OTi(:))+1 ) ) )
         axis([0,MAXSS2_plus1,0,PopSize])
         grid on
@@ -260,17 +278,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:5*ceil(MAXSS2_plus1/5);    
         ax.XMinorGrid = 'on';
-        xticks(0:5:5*ceil(MAXSS2_plus1/5))
-        xticklabels(0:5:5*ceil(MAXSS2_plus1/5))
+        end
+        set(gca,'xtick',0:5*ceil(MAXSS2_plus1/5))
+        set(gca,'xticklabel',0:5*ceil(MAXSS2_plus1/5))
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('\#operator','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -301,17 +323,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:maxOI;    
         ax.XMinorGrid = 'on';
-        xticks(0:maxOI)
-        xticklabels('')
+        end
+        set(gca,'xtick',0:maxOI)
+        set(gca,'xticklabel','')
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('Operator','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -343,9 +369,9 @@ for geni = GENS
     % Bar
     barb=bar(-0.5+(1:maxOI),sum(OTi,1),0.5);
     % Colormap and axis
-        barb.FaceColor='flat';
+        set(barb,'FaceColor','flat');
 %         CMP = flip(hot(MAXSS2_plus1)); % For future versions
-        barb.FaceColor = [0,0,0];
+        set(barb,'FaceColor',[0,0,0]);
         colormap( flip( hot( max(OTi(:))+1 ) ) )
         axis([0,maxOI,0,MAXSS1_plus1])
         grid on
@@ -353,22 +379,26 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:maxOI;    
         ax.XMinorGrid = 'on';
-        xticks(0:10:maxOI)
-        xticklabels('')
+        end
+        set(gca,'xtick',0:maxOI)
+        set(gca,'xticklabel','')
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:5*floor(MAXSS1_plus1/5);    
         ax.YMinorGrid = 'on';
-        yticks(0:5:5*floor(MAXSS1_plus1/5));
-        yt = 0:5:5*floor(MAXSS1_plus1/5);
-        yticks(yt)
-        yt1 = unique([1,5*floor(1:length(yt)/5),length(yt)]);
+        end
+        set(gca,'ytick',0:5*round(MAXSS1_plus1/5));
+        yt = 0:5*round(MAXSS1_plus1/5);
+        set(gca,'ytick',yt)
+        yt1 = unique([1,5*round(1:length(yt)/5),length(yt)]);
         yt2 = ones(length(yt),1); yt2(yt1) = 0; yt2=logical(yt2);
         ytl = num2cell(yt(:)); ytl(yt2) = {''};
-        yticklabels(ytl)
+        set(gca,'yticklabel',ytl)
     % Labels
         xlabel('Operator','Interpreter','latex')
         ylabel('\#use','Interpreter','latex')
@@ -417,9 +447,9 @@ for geni = GENS
     % Bar
         barb=barh(-0.5+(1:PopSize),sum(CTi,2),1);
     % Colormap and axis
-        barb.FaceColor='flat';
+        set(barb,'FaceColor','flat');
 %         CMP = flip(hot(MAXSS2_plus1));
-        barb.FaceColor = [1,0,0];   
+        set(barb,'FaceColor',[1,0,0]);
         colormap( flip( hot( max(CTi(:))+1 ) ) )
         axis([0,MAXSS2_plus1,0,PopSize])
         grid on
@@ -427,17 +457,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:5*ceil(MAXSS2_plus1/5);    
         ax.XMinorGrid = 'on';
-        xticks(0:5:5*ceil(MAXSS2_plus1/5))
-        xticklabels(0:5:5*ceil(MAXSS2_plus1/5))
+        end
+        set(gca,'xtick',0:5*ceil(MAXSS2_plus1/5))
+        set(gca,'xticklabel',0:5*ceil(MAXSS2_plus1/5))
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('\#constant','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -470,17 +504,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:CstRegNumber;    
         ax.XMinorGrid = 'on';
-        xticks(0:5:CstRegNumber)
-        xticklabels(0:5:CstRegNumber)
+        end
+        set(gca,'xtick',0:CstRegNumber)
+        set(gca,'xticklabel',0:CstRegNumber)
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:PopSize;    
         ax.YMinorGrid = 'on';
-        yticks(0:5:PopSize)
-        yticklabels(0:5:PopSize)
+        end
+        set(gca,'ytick',0:PopSize)
+        set(gca,'yticklabel',0:PopSize)
     % Labels
         xlabel('Constant','Interpreter','latex')
         ylabel('Individual','Interpreter','latex')
@@ -512,9 +550,9 @@ for geni = GENS
     % Bar
     barb=bar(-0.5+(1:CstRegNumber),sum(CTi,1),0.5);
     % Colormap and axis
-        barb.FaceColor='flat';
+        set(barb,'FaceColor','flat');
 %         CMP = flip(hot(MAXSS2_plus1)); % For future versions
-        barb.FaceColor = [0,0,0];
+        set(barb,'FaceColor',[0,0,0]);
         colormap( flip( hot( max(CTi(:))+1 ) ) )
         axis([0,CstRegNumber,0,MAXSS1_plus1])
         grid on
@@ -522,17 +560,21 @@ for geni = GENS
         ax = gca;
         set(gca,'GridColor','black','GridAlpha',0.5);
         % x
+        if not(isOctave)
         ax.XAxis.MinorTick = 'on';
         ax.XAxis.MinorTickValues = 0:CstRegNumber;    
         ax.XMinorGrid = 'on';
-        xticks(0:5:CstRegNumber)
-        xticklabels(0:5:CstRegNumber)
+        end
+        set(gca,'xtick',0:CstRegNumber)
+        set(gca,'xticklabel',0:CstRegNumber)
         % y
+        if not(isOctave)
         ax.YAxis.MinorTick = 'on';
         ax.YAxis.MinorTickValues = 0:5*floor(MAXSS1_plus1/5);    
         ax.YMinorGrid = 'on';
-        yticks(0:5:5*floor(MAXSS1_plus1/5))
-        yticklabels(0:5:5*floor(MAXSS1_plus1/5))
+        end
+        set(gca,'ytick',0:5*round(MAXSS1_plus1/5))
+        set(gca,'yticklabel',0:5*round(MAXSS1_plus1/5))
     % Labels
         xlabel('Constant','Interpreter','latex')
         ylabel('\#use','Interpreter','latex')

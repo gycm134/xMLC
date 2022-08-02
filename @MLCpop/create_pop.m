@@ -3,12 +3,12 @@ function pop=create_pop(pop,MLC_parameters,MLC_table)
   % Use the method create_indiv to fill the population with new individuals.
   % It is called by @MLC/generate_population and @MLCpop/replace_individuals
   %
-  % Guy Y. Cornejo Maceda, 07/18/2020
+  % Guy Y. Cornejo Maceda, 2022/07/01
   %
   % See also evolve_pop, evolve_pop, MLCpop.
 
   % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-  % CC-BY-SA
+  % The MIT License (MIT)
 
 
 %% Generating a new population
@@ -16,11 +16,11 @@ function pop=create_pop(pop,MLC_parameters,MLC_table)
 
 %% MLC parameters
   PopSize = size(pop.individuals,1);
-  rmdd = MLC_parameters.RemoveRedundants;
+  rmdd = MLC_parameters.RemoveRedundant;
 
   if MLC_parameters.verbose
       fprintf('Generating new population\n')
-      fprintf(['    population size = ',num2str(PopSize),'\n'])
+      fprintf(['    Population size = ',num2str(PopSize),'\n'])
   end
 
 %% Preallocation
@@ -54,7 +54,7 @@ for p=1:PopSize
     chro_lengths(p,:) = new_individual.chromosome_lengths;
     % Print
     if MLC_parameters.verbose
-        fprintf(' Done \n')
+        fprintf(' Done. \n')
     end
 end
 
@@ -64,5 +64,5 @@ end
   pop.evaluation = 'created';
 
 %% Print
-    fprintf('End of generation : population generated in %s seconds\n',num2str(toc(TIME)))
+    fprintf('End of generation : population generated in %s seconds.\n',num2str(toc(TIME)))
 end

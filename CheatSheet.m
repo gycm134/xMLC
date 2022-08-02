@@ -3,11 +3,11 @@
     % system.
     % The sections should be executed one by one.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     %
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % The MIT License (MIT)
 
 %% Initialization
 % Loads all the path files and create a mlc object
@@ -23,13 +23,13 @@
     % To load my problem
 %     mlc = MLC('MyProblem'); % see save_runs/MyProblem/MyProblem_parameters.m
     
-%% MLC Parameters
+%% Update parameters
     mlc.parameters.Name = 'AQuickTest';
-    mlc.parameters.PopulationSize=20;
+    mlc.parameters.PopulationSize=100;
     mlc.parameters.Elitism = 1;
-    mlc.parameters.CrossoverProb = 0.5;
-    mlc.parameters.MutationProb = 0.5;
-    mlc.parameters.ReplicationProb = 0;
+    mlc.parameters.CrossoverProb = 0.6;
+    mlc.parameters.MutationProb = 0.3;
+    mlc.parameters.ReplicationProb = 0.1;
    
 %% Go
     % Create the first generation
@@ -43,14 +43,18 @@
     % Evaluate it
     mlc.evaluate_population;
     
-    % Evolve 3 more generations
-    mlc.go(5); % 5 because two have already been evaluated.
+    % Gen 3
+    % Generate and evaluate the next generation
+    mlc.go
+    
+    % Evolve 7 more generations until Gen 10
+    mlc.go(10);
     
 %% Save
     mlc.save_matlab;
 
-%% Continue optimizing
-    mlc.go(10);
+%% Extract the best individua
+    mlc.best_individual;
     
 %% Save with another name
     % We change the name to avoid overwriting
@@ -60,13 +64,16 @@
 %% Post processing
     % Plot run information such as cost distribution, pareto front,
     % learning curve etc...
-    mlc.convergence;
+    mlc.learning_process;
+    mlc.Pareto_diagram;
+    mlc.cost_distribution;
+    mlc.spectrogram;
     % Best individual
     mlc.best_individual;
     % Print the 10 best individuals after 5 generations
     mlc.best_individuals(5,10);
     % To plot another control
-    mlc.plot(IDNumber); % where IDNumber is the ID number of another individual.
+    mlc.plotindiv(IDNumber); % where IDNumber is the ID number of another individual.
     mlc.give(IDNumber); % gives some information about this individual.
     
 %% Print the current figure

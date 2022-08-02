@@ -8,12 +8,12 @@ classdef MLCpop < handle
     % with the  command : mlc = MLC('my_problem');
     % To run some generations, use the method go.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, MLCind, MLCtable.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
     %% Properties
     properties

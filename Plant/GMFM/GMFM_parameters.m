@@ -1,12 +1,12 @@
 function parameters = GMFM_parameters()
 	% GMFM_parameters sets the parameters for an GMFM problem.
 	%
-	% Guy Y. Cornejo Maceda, 01/24/2020
+	% Guy Y. Cornejo Maceda, 2022/07/01
 	%
 	% See also MLC.
 
 	% Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-	% CC-BY-SA
+	% The MIT License (MIT)
 
 %% Options
 	parameters.verbose = 2;
@@ -136,12 +136,12 @@ function parameters = GMFM_parameters()
     % Population size
     parameters.PopulationSize = 10;
     % Optimization parameters
-    parameters.OptiMonteCarlo = 1; % Optimization of the first generation (remove duplicates, redundants..)
+    parameters.OptiMonteCarlo = 1; % Optimization of the first generation (remove duplicates, redundant..)
     parameters.RemoveBadIndividuals = 1; % Remove indiviuals which evaluation failed
-    parameters.RemoveRedundants = 1; % Remove already evaluated individuals
+    parameters.RemoveRedundant = 1; % Remove already evaluated individuals
     parameters.CrossGenRemoval = 1; % Remove the individuals if they have already been evaluated in an earlier generation
     parameters.ExploreIC = 1; % Evaluate the initial condition of registers (here:b=0)
-    % For remove_duplicates_operators and redundants, maximum number of
+    % For remove_duplicates_operators and redundant, maximum number of
     % iterations of the operations when the test is not satisfied.
     parameters.MaxIterations = 10; % better around 100 (-> MaxInterations)
     % Reevaluate individuals (noise and experiment)

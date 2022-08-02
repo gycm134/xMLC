@@ -2,12 +2,12 @@ function redundant = find_redundant(MLC_table,indiv)
     % FIND_INDIV finds indices of indiv
     % Checks if indiviuals with the same control points exists.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, MLCpop, MLCind.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Retrieve control points
 if isempty(MLC_table.non_redundant)

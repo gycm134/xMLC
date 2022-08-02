@@ -8,12 +8,12 @@ classdef MLC < handle
     % with the  command : mlc = MLC('my_problem');
     % To run some generations, use the method go.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also go, @MLC/save, @MLC/load.
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % The MIT License (MIT)
 
     %% Properties
     properties
@@ -26,7 +26,7 @@ classdef MLC < handle
         % Indicator
             generation
         % Version
-            version='0.10';
+            version
     end %properties
 
     %% External methods
@@ -42,11 +42,13 @@ classdef MLC < handle
             rename(obj,NewName);
         % Visualizations
             spectrogram(MLC);
-            [x,y] = convergence(MLC,ParetoFront,plt);
+            [x,y] = learning_process(MLC,plt);
+            Pareto_diagram(MLC,a,b);
+            cost_distribution(MLC);
             genoperatorsdistrib(MLC);
             IndivID = relationship(MLC);
             plotindiv(MLC,Idx);
-            printfigure(MLC,FigureName);
+            printfigure(MLC,FigureName,Rewrite);
         % Population related methods
             generate_population(obj);
             evaluate_population(obj,gen);
@@ -59,7 +61,7 @@ classdef MLC < handle
             expe_create_control_time(obj,gen,IND);
         % Individuals related methods
             b=best_individual(MLC,gen,visu);
-            output=best_individuals(MLC,gen,Nbest);
+            output=list_best_individuals(MLC,gen,Nbest);
             give(MLC,GEN,IND)
             chromosome(MLC,GEN,IND)
         % Print
@@ -86,7 +88,12 @@ classdef MLC < handle
             end
             obj.table = MLCtable(obj.parameters);
             obj.generation = 0;
-            obj.show_problem;
+            % Define version
+            FileID = fopen('Version.txt','r');
+            version_ = textscan(FileID,'%s');
+            obj.version = version_{1}{1};
+            % Show problem
+            obj.show_problem;   
         end
 
         %     function display(obj)
@@ -161,3 +168,4 @@ classdef MLC < handle
     end %methods
 
 end %classdef
+

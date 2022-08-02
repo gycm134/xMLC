@@ -11,12 +11,12 @@ function Jout=best_individual(MLC,GEN,visu)
     % the case of stochastic problems.
     % This method gives back the best evaluation among all the evaluations.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also best_individuals, give, chromosome.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 %% Parameters
 % Not used here.
 %     EstimatePerformance = MLC.parameters.ProblemParameters.EstimatePerformance;

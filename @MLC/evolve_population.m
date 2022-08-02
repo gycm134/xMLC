@@ -3,12 +3,12 @@ function evolve_population(MLC)
     % Crates a new evaluation thanks to genetic operators.
     % It should only be called by the GO.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also go, evaluate_population, generate_population.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     PopSize = MLC.parameters.PopulationSize;

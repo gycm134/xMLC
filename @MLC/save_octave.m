@@ -4,12 +4,12 @@ function save_octave(MLC,AuxName)
     % To load the MLC object : MLC.load('NameOfMyRun');
     % This method is made for Octave only
     %
-    % Guy Y. Cornejo Maceda, 01/31/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, go, @MLC/load_MLC.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     Name = MLC.parameters.Name;
@@ -49,7 +49,7 @@ function save_octave(MLC,AuxName)
         individuals(q).cost = MLC.table.individuals(q).cost;
         individuals(q).control_law = MLC.table.individuals(q).control_law;
         individuals(q).EI = MLC.table.individuals(q).EI;
-        individuals(q).occurences = MLC.table.individuals(q).occurences;
+        individuals(q).occurrences = MLC.table.individuals(q).occurrences;
         individuals(q).evaluation_time = MLC.table.individuals(q).evaluation_time;
         individuals(q).hash = MLC.table.individuals(q).hash;
         individuals(q).control_points = MLC.table.individuals(q).control_points;

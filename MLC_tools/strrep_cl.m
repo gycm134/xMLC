@@ -2,12 +2,12 @@ function NewSyntaxCL = strrep_cl(MLC_parameters,ControlLaw,TypeOfReplacement)
     % STRREP_PRETESTING Changes the inputs of the control laws for pretesting
     %
     %
-    % Guy Y. Cornejo Maceda, 03/03/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also tresh, limit.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     NI = MLC_parameters.ProblemParameters.OutputNumber;

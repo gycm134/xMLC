@@ -3,12 +3,12 @@ function [new_indiv,indices,submat]=exclude_introns(MLC_parameters,chromosome)
     % Gives the effective matrix, the effective lines and the submatrices
     % for each input.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also create_indiv, chromosome.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Operators characteristics
   ops = opset(1:max(MLC_parameters.ControlLaw.OperatorIndices));

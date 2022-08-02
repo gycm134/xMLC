@@ -3,12 +3,12 @@ function new_pop = crossover(new_pop,pop,MLC_parameters,MLC_table,N_indivs,f2)
     % The argument N_indivs helps to keep track of the number of individuals to add.
     % f2 indicates if one or two control laws needs to be added.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also Elitism, mutate, evolve_pop.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Argument
   if nargin<6, f2=false; end
@@ -22,7 +22,7 @@ rmdd = 1;
 %% While loop to generate new individuals
   while rmdd && cmpt<Nmax
       % rmdd definition
-      rmdd = MLC_parameters.RemoveRedundants;
+      rmdd = MLC_parameters.RemoveRedundant;
 
       % crossover
       idx1 = selection_individual(MLC_parameters);
@@ -61,8 +61,8 @@ rmdd = 1;
       [already_exist1,already_exist2] = swap(already_exist1,already_exist2);
   end
 
-% If no remove redundants, no need to exclude individuals that already exists
-  if not(MLC_parameters.RemoveRedundants)
+% If no remove redundant, no need to exclude individuals that already exists
+  if not(MLC_parameters.RemoveRedundant)
       already_exist1 = 0;
       already_exist2 = 0;
   end

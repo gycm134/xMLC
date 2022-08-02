@@ -8,12 +8,12 @@ function idx = selection_individual(MLC_parameters)
     % The individuals selected for the tournament can be the same, there is a
     % replacement.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also read, mat2lisp, simplify_my_LISP.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
   PopSize = MLC_parameters.PopulationSize;

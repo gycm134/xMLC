@@ -4,12 +4,12 @@ function MLC = load_octave(MLC,Name,AuxName)
     % To load the MLC object : MLC.load('NameOfMyRun');
     % This method is made for octave only
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, go, @MLC/save_MLC.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 %% Load 
     if nargin<3,LoadName='MLC';else,LoadName=AuxName;end
     LoadMLC = ['save_runs/',Name,'/',LoadName,'_Octave.mat'];
@@ -47,7 +47,7 @@ function MLC = load_octave(MLC,Name,AuxName)
       indiv.cost = tmp.MLC_Octave.Octable.individuals(q).cost;
       indiv.control_law = tmp.MLC_Octave.Octable.individuals(q).control_law;
       indiv.EI = tmp.MLC_Octave.Octable.individuals(q).EI;
-      indiv.occurences = tmp.MLC_Octave.Octable.individuals(q).occurences;
+      indiv.occurrences = tmp.MLC_Octave.Octable.individuals(q).occurrences;
       indiv.evaluation_time = tmp.MLC_Octave.Octable.individuals(q).evaluation_time;
       indiv.hash = tmp.MLC_Octave.Octable.individuals(q).hash;
       indiv.control_points = tmp.MLC_Octave.Octable.individuals(q).control_points;

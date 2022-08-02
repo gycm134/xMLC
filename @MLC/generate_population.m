@@ -3,12 +3,12 @@ function generate_population(MLC)
     % Creates the first generation if it doesn't exist.
     % The population needs then to be evaluated.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also evaluate_population, evolve_population
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
   PopSize = MLC.parameters.PopulationSize;
@@ -30,7 +30,7 @@ function generate_population(MLC)
             MLC.population.evaluation = 'ready_to_evaluate';
             MLC.population.CreationOrder = 1:PopSize;
     else
-        fprintf('First population already generated\n')
+        fprintf('First population already generated.\n')
     end
 
 %% External evaluation

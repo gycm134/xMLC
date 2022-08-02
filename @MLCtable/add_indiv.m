@@ -6,12 +6,12 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
     % already_exist gives 1 if the string expression has already been explored
     % otherwise it gives 0
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, MLCpop, MLCind.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
   CrossGenRemoval = MLC_parameters.CrossGenRemoval;
@@ -42,7 +42,7 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
   else
       idx = index_indiv;
       Indiv = MLC_table.individuals(idx);
-      Indiv.occurences = Indiv.occurences+1;
+      Indiv.occurrences = Indiv.occurrences+1;
       MLC_table.individuals(idx) = Indiv;
   end
 

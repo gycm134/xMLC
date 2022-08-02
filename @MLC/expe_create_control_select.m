@@ -2,16 +2,16 @@ function b_output=expe_create_control_select(MLC,gen,IND)
   % EXPE_CREATE_CONTROL_SELECT creates a control law file for external evaluation.
   % Takes in argument an MLC object, a generation and a list of indices to create
   % a file containing the corresponding control law.
-  % That file (bNn.m) is to be used in an external evaluation.
+  % That file (ControlLawSelect.m) is to be used in an external evaluation.
   % A number is associated to each control law.
   % This number is used to switch from one control law to the other.
   %
-  % Guy Y. Cornejo Maceda, 03/18/2020
+  % Guy Y. Cornejo Maceda, 2022/07/01
   %
   % See also expe_create_control_solo, expe_create_control_time.
 
   % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-  % CC-BY-SA
+  % The MIT License (MIT)
 
 %% Initilization
   % Name

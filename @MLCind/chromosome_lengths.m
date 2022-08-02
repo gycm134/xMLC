@@ -3,12 +3,12 @@ function le = chromosome_lengths(indiv)
     % Gives a vector of two components, the length of the chromosomes and the
     % length of the effective matrix.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also best_individual, best_individuals
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Gives back the lengths of chromosome and EIchromosome
     s1 = size(indiv.chromosome,1);

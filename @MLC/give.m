@@ -9,12 +9,12 @@ function give(MLC,GenList,IndList)
     % gives information about individual 1, 20 and 30 of the table (database)
     % The cost is given according to the EstimatePerformance parameter.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also best_individual, best_individuals
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 %% Parameters
     EstimatePerformance = MLC.parameters.ProblemParameters.EstimatePerformance;
 %% Loop over the individuals
@@ -58,7 +58,7 @@ for p=1:size(all_J,1)
     if p>3,ord=ListOrd{4};else ord=ListOrd{p};end
     fprintf('       %i-%s evaluation cost : %f\n',p,ord,all_J(p))
 end
-fprintf('   occurences: %i\n',individual.occurences)
+fprintf('   occurrences: %i\n',individual.occurrences)
 fprintf('   control law:')
 fprintf('\n')
 

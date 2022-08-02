@@ -2,12 +2,12 @@ function genoperatorsdistrib(MLC)
     % genoperatorsdistrib gives the distribution of the operators across the
     % generations
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also indivhistory
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     NGen = MLC.generation;

@@ -2,12 +2,12 @@ function MLC3 = rename(MLC3,NewName)
 % MLC3 class rename method
 % Change the name of the run
 %
-% Guy Y. Cornejo Maceda, 08/27/209
+% Guy Y. Cornejo Maceda, 2022/07/01
 %
 % See also MLC3.
 
-% Copyright: 2019 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-% CC-BY-SA
+% Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+% The MIT License (MIT)
 
 %% Parameters
     Name = MLC3.parameters.Name;
@@ -16,7 +16,7 @@ function MLC3 = rename(MLC3,NewName)
     
 %% Test
     if exist(['save_runs/',NewName],'dir')
-        error('This run already exist')
+        error('This run already exist.')
     end
     
 %% Change name

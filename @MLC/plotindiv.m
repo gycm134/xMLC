@@ -1,12 +1,12 @@
 function plotindiv(MLC,Idx)
     % PLOT plots the individual Idx
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLCind, evaluate_indiv.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 %% Individual and evaluation function
 Indiv = MLC.table.individuals(Idx);
     control_law = Indiv.control_law;

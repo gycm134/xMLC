@@ -4,12 +4,12 @@ function expr_lisp = mat2lisp(MLC_parameters,chromosome)
     % The matrice expression becomes a "lisp" expression, that will
     % be useful for simplication
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also read, readmylisp_to_evaluate.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% initialization
 r = MLC_parameters.ControlLaw.Registers;

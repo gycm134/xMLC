@@ -2,12 +2,12 @@ function [N_indivs,new_pop] = elitism(new_pop,pop,MLC_parameters,MLC_table)
     % ELITISM Elitism operation
     % Saves individuals from last population to the population
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also crossover, mutate, evolve_pop.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
   N_Elitism = MLC_parameters.Elitism;
@@ -21,7 +21,7 @@ function [N_indivs,new_pop] = elitism(new_pop,pop,MLC_parameters,MLC_table)
   for p=1:N_Elitism
       idx = pop.individuals(p);
       Indiv = MLC_table.individuals(idx);
-      Indiv.occurences = Indiv.occurences+1;
+      Indiv.occurrences = Indiv.occurrences+1;
       MLC_table.individuals(idx) = Indiv;
       new_pop.operation{p}.type = 'Elitism';
       new_pop.parents(p,1) = idx;

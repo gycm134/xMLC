@@ -7,12 +7,12 @@ function J_out=GMFM_problem(Arrayb,parameters,visu)
     %            Arrayb = {'cos(10*t)'};
     %            Arrayb = {'a1^2'};
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also read, mat2lisp, simplify_my_LISP.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     ActuationLimit = parameters.ProblemParameters.ActuationLimit;

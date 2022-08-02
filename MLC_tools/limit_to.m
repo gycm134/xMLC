@@ -2,12 +2,12 @@ function boutput=limit_to(b,act_lim,fortran_evaluation)
     % LIMIT_TO Add threshold function to each control law
     % Should be used after the strrep_cl !
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
-    % See also External_evaluation_END, External_evaluation_START.
+    % See also MyPlant_problem.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 if nargin<3
     fortran_evaluation=0;
@@ -28,5 +28,5 @@ for p=1:size(b,1)
         val_min=[val_min,'D0'];
         val_max=[val_max,'D0'];
     end
-    boutput{p} = ['thresh(',bs,',',val_min,',',val_max,')'];
+    boutput{p} = ['clip(',bs,',',val_min,',',val_max,')'];
 end

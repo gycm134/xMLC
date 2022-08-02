@@ -8,12 +8,12 @@ function complete_evaluation(MLC,Gen,matJ)
     % to the cost of individual in line Y in the GenXpopulation.mat and generation X.
     % GenXpopulation.mat: [Ja,Jb,...]
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also external_evaluation, External_evaluation_CONTINUE, External_evaluation_END.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     PopSize = MLC.parameters.PopulationSize;

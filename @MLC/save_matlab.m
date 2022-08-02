@@ -3,12 +3,12 @@ function save_matlab(MLC,AuxName)
     % Saves the MLC object (mlc) in the save_runs folder with the its name.
     % To load the MLC object : mlc.load('NameOfMyRun');
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, go, @MLC/load.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Parameters
     Name = MLC.parameters.Name;

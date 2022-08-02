@@ -6,12 +6,12 @@ function [IND,pop] = pretesting(pop,MLC_parameters,MLC_table,pop_old,idx_bad_val
     % Those individuals are then removed and replaced by new individuals generated
     % from the evolution of the last population.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also clean, replace_individuals, find_wrong_individuals.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Find the wrong individuals
     idx = find_wrong_individuals(pop,MLC_parameters,MLC_table,idx_bad_values); %logical

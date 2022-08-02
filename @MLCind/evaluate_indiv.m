@@ -5,29 +5,38 @@ function MLC_ind = evaluate_indiv(MLC_ind,IdxGen,MLC_parameters,visu)
     % will be evaluated even if it has already been evaluated and the cost is the mean
     % value of all the costs.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLCind, evaluate_indiv.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Arguments
   if nargin<4
       visu=0;
   end
 
+%% MATLAB options
+    % Version
+    isOctave = exist('OCTAVE_VERSION', 'builtin') ~= 0;
+    
 %% Parameters
     RoundEval = MLC_parameters.ProblemParameters.RoundEval;
     EvaluationFunction = MLC_parameters.EvaluationFunction;
     ProblemType = MLC_parameters.ProblemType;
     % Define gamma for LabView
-    Prop = fields(MLC_parameters.ProblemParameters);
+    if isOctave
+      Prop = fieldnames(MLC_parameters.ProblemParameters);
+    else
+      Prop = fields(MLC_parameters.ProblemParameters);
+    end
     if sum(strcmp(Prop,'gamma'))
         gamma_all = [1,MLC_parameters.ProblemParameters.gamma];
     else
         gamma_all = 1;
     end
+    
     
 %% Create the control law if needed (Is is useful?)
 if strcmp(ProblemType,'MATLAB')
@@ -67,13 +76,16 @@ if MLC_ind.cost{1}==-1 || MLC_parameters.MultipleEvaluations>0
                     % Waiting for the file
                 end
                 fprintf(' Here it is!\n')
-                % Read and delete J.txt
+                % Two solutions to continue:
+                % 1. Read and delete J.txt
                 Jtab = load([LabViewPath,'J.txt'],'-ascii');
                 if numel(Jtab)~=numel(gamma_all)
                     error('Gamma is not defined well')
                 end
                 J = [sum(gamma_all.*Jtab),num2cell(Jtab)];
                 delete([LabViewPath,'J.txt']);
+                % 2. Or compute the cost from the time series.
+                % To be completed.
         end
         
         % Add value to MLC_indiv

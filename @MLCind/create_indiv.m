@@ -3,12 +3,12 @@ function new_individual = create_indiv(new_individual,MLC_parameters,first)
     % For a MLCind object, fills the properties by creating a random matrix.
     % The individual is then ready to be evaluated.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLCind, evaluate_indiv.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
     
 %% MATLAB options
     % Version
@@ -48,7 +48,7 @@ end
 	new_individual.chromosome = chromosome;
 	new_individual.control_law = control_law;
 	new_individual.EI = EI;
-	new_individual.occurences = 1;
+	new_individual.occurrences = 1;
 	% hash function
     if isOctave
         hashvalue = hash('MD5',mat2str(new_individual.chromosome)); % Octave

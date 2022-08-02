@@ -2,12 +2,12 @@ function rep_indiv = replication(indiv)
     % REPLICATION copy/paste one individual
     % Old method. Not used.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also crossover, mutate.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 rep_indiv = indiv;
 rep_indiv.parents = indiv.Rank;

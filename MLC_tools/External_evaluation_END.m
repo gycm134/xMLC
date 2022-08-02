@@ -3,18 +3,18 @@ function External_evaluation_END(gen)
     % To be used after the evaluation of the individuals of genetation GEN.
     % Retrieves the cost information and completes the population.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also external_evaluation_CONTINUE, External_evaluation_START.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %End_LGP_script
 Initialization;
-mlc=MLC('MyProblem');
+mlc=MLC('MyExternalPlant');
 %% Load
-    mlc.load_matlab('MyProblem',['Gen',num2str(gen-1)]);
+    mlc.load_matlab('ExternalTestRun',['Gen',num2str(gen-1)]);
 
 %% Complete
     matJ = External_build_matJ(mlc.parameters,gen);

@@ -2,12 +2,12 @@ function new_pop = mutate(new_pop,pop,MLC_parameters,MLC_table,N_indivs)
     % MUTATE operates one mutation from pop to new_pop
     % The argument N_indivs helps to keep track of the number of individuals to add.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also Elitism, mutate, evolve_pop.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Initialization
   pop_ind = pop.individuals;
@@ -18,7 +18,7 @@ function new_pop = mutate(new_pop,pop,MLC_parameters,MLC_table,N_indivs)
 %% While loop to generate new individuals
 while rmdd && cmpt<Nmax
     % rmdd definition
-    rmdd = MLC_parameters.RemoveRedundants;
+    rmdd = MLC_parameters.RemoveRedundant;
 
     % mutation
     idx1 = selection_individual(MLC_parameters);

@@ -1,12 +1,12 @@
 function create_folders(name)
     % Creates the needed folders to save an MLC run.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also chromosome, MLCind.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Other folders
     dir = ['save_runs/',name];

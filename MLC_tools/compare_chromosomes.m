@@ -3,12 +3,12 @@ function bool = compare_chromosomes(chro1,chro2)
     % if they are the same then returns bool = 1
     % otherwise it returns bool = 0
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also chromosome, MLCind.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Size test
 le = size(chro1,1);

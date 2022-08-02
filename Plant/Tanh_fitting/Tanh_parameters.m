@@ -1,20 +1,20 @@
-function parameters = FixedPoint_parameters()
-	% Parameters for the stabilization of a limit cycle to its fixed point.
+function parameters = Tanh_parameters()
+	% Default parameters for the tanh problem.
 	%
-	% Guy Y. Cornejo Maceda, 01/24/2020
+	% Guy Y. Cornejo Maceda, 2022/07/01
 	%
 	% See also MLC.
 
 	% Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-	% CC-BY-SA
+	% The MIT License (MIT)
 
 %% Options
 	parameters.verbose = 2;
-
+   
 %% Problem parameters
 % Problem
-    parameters.Name = 'FP'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
-    parameters.EvaluationFunction = 'FixedPoint'; % 'GMFM' or 'FP' or 'none'
+    parameters.Name = 'Tanh_fitting'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
+    parameters.EvaluationFunction = 'tanh'; % 'GMFM' or 'FP' or 'none'
     parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
     % Path for external evaluation
     parameters.PathExt = '/Costs'; % For external evaluations
@@ -27,12 +27,12 @@ function parameters = FixedPoint_parameters()
         ProblemParameters.OutputNumber = 1; % Number of OutputNumber
         % Intputs - Number of sensors and time dependent functions
             % si(t)
-            ProblemParameters.NumberSensors = 2;
-            ProblemParameters.Sensors = {'a1','a2'}; % name in the problem
+            ProblemParameters.NumberSensors = 0;
+            ProblemParameters.Sensors = {}; % name in the problem
             % hi(t)
-            ProblemParameters.NumberTimeDependentFunctions = 0; % sin(wt)... multifrequency-forcing
-            ProblemParameters.TimeDependentFunctions = {}; % syntax in MATLAB/Octave
-%             ProblemParameters.TimeDependentFunctions{2,:} = {}; % syntax in the problem (if null then comment)
+            ProblemParameters.NumberTimeDependentFunctions = 1; % sin(wt)... multifrequency-forcing
+            ProblemParameters.TimeDependentFunctions = {'t'}; % syntax in MATLAB/Octave. 't' is the time variable.
+            ProblemParameters.TimeDependentFunctions(2,:) = {'T'}; % syntax in the problem (if null then comment)
         ProblemParameters.InputNumber = ProblemParameters.NumberSensors+ProblemParameters.NumberTimeDependentFunctions; 
         % Control Syntax
         Sensors = cell(1,ProblemParameters.NumberSensors); %*
@@ -42,77 +42,79 @@ function parameters = FixedPoint_parameters()
         ControlSyntax = horzcat(Sensors,TDF); %*
         
         % Essential problem parameters
-            ProblemParameters.NPeriods = 25; % Number of periods
-            ProblemParameters.T0 = 0; % Not always used
-            ProblemParameters.Tmax = 2*pi*ProblemParameters.NPeriods/1; % omega=1
+            ProblemParameters.T0 = -2; % Care control points
+            ProblemParameters.Tmax = 2;
             % Actuation limitation : [lower bound,upper bound]
-            ProblemParameters.ActuationLimit = [-1,1];
+            ProblemParameters.ActuationLimit = [-inf,inf];
+            % Actuation limitation : [lower bound,upper bound]
+            ProblemParameters.ActuationLimit = [-inf,inf];
         % Evaluation - used in the *_problem.m file
         % Maximum evaluation time otherwise returns an bad value
-        ProblemParameters.TmaxEv = 5; % otherwise bad
+        ProblemParameters.TmaxEv = 5; % otherwise parameters.BadValue is given
         % Problem definition
-        ProblemParameters.NPointsPeriod = 51; % Number of points per period
-            time = linspace(ProblemParameters.T0,ProblemParameters.Tmax,...
-                ProblemParameters.NPointsPeriod*ProblemParameters.NPeriods+1);
-        ProblemParameters.dt = time(2)-time(1);
-        ProblemParameters.InitialCondition = sqrt(0.1)*[1 0;0 1;-1 0;0 -1]; % Four symmetrical
+        ProblemParameters.T0 = -2; % Care control points
+        ProblemParameters.Tmax = 2;
+        ProblemParameters.dt = 1e-4;
+        % number of initial conditions
+        ProblemParameters.InitialCondition = 1;
         % Cost function penalization
-        ProblemParameters.gamma = [0.01]; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
-        
+%         ProblemParameters.gamma = [];% J = Ja + gamma(1)*Jb + gamma(2)*Jc
+
         % Round evaluation of control points and J
         ProblemParameters.RoundEval = 6;
         % Costs
         ProblemParameters.J0 = 1; % User defined
-        ProblemParameters.Jmin = 0; % User defined
-        ProblemParameters.Jmax = inf; % User defined
+        ProblemParameters.Jmin = 0;
+        ProblemParameters.Jmax = inf;
         % Estimate performance
         ProblemParameters.EstimatePerformance = 'mean'; % default 'mean', if drift 'last', 'worst', 'best'
-
-    % Definition
-    parameters.ProblemParameters = ProblemParameters; %*
-
-%% Control law parameters
-        % Number of instructions
-        ControlLaw.InstructionSize.InitMax=20;
-        ControlLaw.InstructionSize.InitMin=1;
-        ControlLaw.InstructionSize.Max=20;
         
-        % Operators
-        ControlLaw.OperatorIndices = [1:5,7:9];
-            %   implemented:     - 1  addition       (+)
-            %                    - 2  substraction   (-)
-            %                    - 3  multiplication (*)
-            %                    - 4  division       (%)
-            %                    - 5  sinus         (sin)
-            %                    - 6  cosinus       (cos)
-            %                    - 7  logarithm     (log)
-            %                    - 8  exp           (exp)
-            %                    - 9  tanh          (tanh)
-            %                    - 10 square        (.^2)
-            %                    - 11 modulo        (mod)
-            %                    - 12 power         (pow)
-            %
-        ControlLaw.Precision = 6; % Precision of the evaluation of the control law % to change also in my_div and my_log
-        % Registers
-            % Number of variable registers
+    % Definition
+    parameters.ProblemParameters = ProblemParameters;
+
+ %% Control law parameters
+  		% Number of instructions
+  		ControlLaw.InstructionSize.InitMax=50;
+  		ControlLaw.InstructionSize.InitMin=1;
+  		ControlLaw.InstructionSize.Max=50;
+        
+  		% Operators
+  		ControlLaw.OperatorIndices = [1:9];
+  			%   implemented:     - 1  addition       (+)
+  			%                    - 2  substraction   (-)
+  			%                    - 3  multiplication (*)
+  			%                    - 4  division       (%)
+  			%                    - 5  sinus         (sin)
+  			%                    - 6  cosinus       (cos)
+  			%                    - 7  logarithm     (log)
+  			%                    - 8  exp           (exp)
+  			%                    - 9  tanh          (tanh)
+  			%                    - 10 square        (.^2)
+  			%                    - 11 modulo        (mod)
+  			%                    - 12 power         (pow)
+  			%
+  		ControlLaw.Precision = 6;
+        
+  		% Registers      
+        % Number of variable.ControlLaw.Registers
             VarRegNumberMinimum = ProblemParameters.OutputNumber+ProblemParameters.InputNumber; %*
             ControlLaw.VarRegNumber = VarRegNumberMinimum + 3; % add some memory slots if needed  
-            % Number of constant registers
+            % Number of constant.ControlLaw.Registers
             ControlLaw.CstRegNumber = 4;
             ControlLaw.CstRange = [repmat([-1,1],ControlLaw.CstRegNumber,1)]; % Range of values of the random constants
-            % Total number of registers
-            ControlLaw.RegNumber = ControlLaw.VarRegNumber + ControlLaw.CstRegNumber;  %* % variable registers and constante registers (operands)
-            
-            % Register initialization
-                NVR = ControlLaw.VarRegNumber; %*
-                RN = ControlLaw.RegNumber; %*
-                r{RN}='0'; %*
-                r(:) = {'0'}; %*
-                % Variable registers
+            % Total number of.ControlLaw.Registers
+            ControlLaw.RegNumber = ControlLaw.VarRegNumber + ControlLaw.CstRegNumber;  %* % variable.ControlLaw.Registers and constante.ControlLaw.Registers (operands)
+
+  		% Register initialization
+  			NVR = ControlLaw.VarRegNumber;%*
+  			RN = ControlLaw.RegNumber;%*
+            r{RN}='0';%*
+            r(:)={'0'};%*
+            % Variable.ControlLaw.Registers
                 for p=1:ProblemParameters.InputNumber %*
                     r{p+ProblemParameters.OutputNumber} = ControlSyntax{p}; %*
                 end
-                % Constant registers
+                % Constant.ControlLaw.Registers
                 minC = min(ControlLaw.CstRange,[],2); %*
                 maxC = max(ControlLaw.CstRange,[],2); %*
                 dC = maxC-minC; %*
@@ -120,16 +122,17 @@ function parameters = FixedPoint_parameters()
                     r{p} = num2str(dC(p-NVR)*rand+minC(p-NVR)); %*
                 end %*
             ControlLaw.Registers = r; %*
-            
+
         % Control law estimation
-        ControlLaw.ControlPointNumber = 1000;
-        ControlLaw.SensorRange = [repmat([-2 2],ProblemParameters.NumberSensors,1)]; % Range for sensors
-            Nbpts = ControlLaw.ControlPointNumber; %*
-            Rmin = min(ControlLaw.SensorRange,[],2); %*
-            Rmax = max(ControlLaw.SensorRange,[],2); %*
-            dR = Rmax-Rmin; %*
-        ControlLaw.EvalTimeSample = rand(1,Nbpts)*ProblemParameters.Tmax; %*
-        ControlLaw.ControlPoints = rand(ProblemParameters.NumberSensors,Nbpts).*dR+Rmin; %*
+  		ControlLaw.ControlPointNumber = 1000;%* new Name
+  		ControlLaw.SensorRange = [-2,2];%*
+  		    Nbpts = ControlLaw.ControlPointNumber;%*
+  		    Rmin = min(ControlLaw.SensorRange,[],2);%*
+  		    Rmax = max(ControlLaw.SensorRange,[],2);%*
+  		    Rmean = mean([Rmin,Rmax]);%*
+  		    dR = abs(Rmean-Rmin);%*
+  		ControlLaw.EvalTimeSample = rand(1,Nbpts)*(ProblemParameters.Tmax-ProblemParameters.T0)+ProblemParameters.T0;
+  		ControlLaw.ControlPoints = 2*rand(ProblemParameters.InputNumber,Nbpts)*dR+Rmin;%*
 
     % Definition
     parameters.ControlLaw = ControlLaw; %*
@@ -138,12 +141,12 @@ function parameters = FixedPoint_parameters()
     % Population size
     parameters.PopulationSize = 10;
     % Optimization parameters
-    parameters.OptiMonteCarlo = 1; % Optimization of the first generation (remove duplicates, redundants..)
+    parameters.OptiMonteCarlo = 1; % Optimization of the first generation (remove duplicates, redundant..)
     parameters.RemoveBadIndividuals = 1; % Remove indiviuals which evaluation failed
-    parameters.RemoveRedundants = 1; % Remove already evaluated individuals
+    parameters.RemoveRedundant = 1; % Remove already evaluated individuals
     parameters.CrossGenRemoval = 1; % Remove the individuals if they have already been evaluated in an earlier generation
     parameters.ExploreIC = 1; % Evaluate the initial condition of registers (here:b=0)
-    % For remove_duplicates_operators and redundants, maximum number of
+    % For remove_duplicates_operators and redundant, maximum number of
     % iterations of the operations when the test is not satisfied.
     parameters.MaxIterations = 10; % better around 100 (-> MaxInterations)
     % Reevaluate individuals (noise and experiment)

@@ -3,12 +3,12 @@ function new_pop = evolve_pop(pop,MLC_parameters,MLC_table,NbIndividuals)
     % The new individuals are generated thanks to the genetic operators and stored
     % in the table
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also create_pop, evaluate_pop, MLCpop.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Arguments
 if nargin<4, NbIndividuals=size(pop.individuals,1);end
@@ -21,24 +21,36 @@ GeneticProbabilities = [MLC_parameters.CrossoverProb;
                         
 %% Initialization of the generation gen+1
 new_pop = MLCpop(pop.generation+1,PopSize);
-N_indivs = 0;
+NIndivs = 0;
 
 %% Elitism
 if NbIndividuals==MLC_parameters.PopulationSize
-  N_indivs = new_pop.elitism(pop,MLC_parameters,MLC_table); %number of individuals already generated
+  NIndivs = new_pop.elitism(pop,MLC_parameters,MLC_table); %number of individuals already generated
+  % Print output
+  if MLC_parameters.verbose
+      for p=1:NIndivs
+        fprintf('    Generating new individual %i/%i %s.\n',p,PopSize,'Elitism')
+      end
+  end
 end
 
 %% Loop to fill the population
-while N_indivs < PopSize
+while NIndivs < PopSize
     % Choose the operation
     ope = choose_operation(GeneticProbabilities);
     switch ope
         case 'replication'
-            new_pop.replication(pop,MLC_parameters,MLC_table,N_indivs);
+            new_pop.replication(pop,MLC_parameters,MLC_table,NIndivs);
+            if MLC_parameters.verbose
+                fprintf('    Generating new individual %i/%i %s.\n',NIndivs+1,PopSize,'Replication')
+            end
 
         case 'mutation'
-            new_pop.mutate(pop,MLC_parameters,MLC_table,N_indivs);
+            new_pop.mutate(pop,MLC_parameters,MLC_table,NIndivs);
             % new_pop size increase
+            if MLC_parameters.verbose
+                fprintf('    Generating new individual %i/%i %s.\n',NIndivs+1,PopSize,'Mutation')
+            end
 
         case 'crossover'
             if strcmp(MLC_parameters.CrossoverOptions{1},'gives2') %is it an option?
@@ -46,16 +58,24 @@ while N_indivs < PopSize
             else
                 g2=false;
             end
-            if N_indivs < PopSize-1 % do we hace the space ?
+            if NIndivs < PopSize-1 % do we have the space ?
                 c2=true;
             else
                 c2=false;
             end
-
-            new_pop.crossover(pop,MLC_parameters,MLC_table,N_indivs,g2&&c2);
+            N1 = sum(new_pop.chromosome_lengths(:,1)>0);
+            new_pop.crossover(pop,MLC_parameters,MLC_table,NIndivs,g2&&c2);
+            N2 = sum(new_pop.chromosome_lengths(:,1)>0);
+            
+            if MLC_parameters.verbose
+                fprintf('    Generating new individual %i/%i %s.\n',NIndivs+1,PopSize,'Crossover')
+                if N2>(N1+1)
+                    fprintf('    Generating new individual %i/%i %s.\n',NIndivs+2,PopSize,'Crossover')
+                end
+            end
     end
     % new_pop size increase
-    N_indivs = sum(new_pop.chromosome_lengths(:,1)>0);
+    NIndivs = sum(new_pop.chromosome_lengths(:,1)>0);
 end
 
 %% Update properties

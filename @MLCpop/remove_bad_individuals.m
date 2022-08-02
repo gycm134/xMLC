@@ -5,12 +5,12 @@ function pop = remove_bad_individuals(pop,MLC_parameters,MLC_table,pop_old)
     % The function is recursive and stops when the population is free of bad individuals.
     % A bad individual is an individual that failed to be evaluated
     %
-        % Guy Y. Cornejo Maceda, 01/24/2020
+        % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also pretesting, find_bad_individuals, clean.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 
 %% Find the bad individuals
@@ -18,7 +18,7 @@ function pop = remove_bad_individuals(pop,MLC_parameters,MLC_table,pop_old)
 
 %% If there are bad individuals remove/generate/evaluate
   if not(length(idx))
-      fprintf('No bad individuals to remove\n')
+      fprintf('No bad individuals to be removed.\n')
       return
   end
   fprintf('%i bad individuals to be removed\n',length(idx))

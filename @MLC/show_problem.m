@@ -1,21 +1,21 @@
 function show_problem(MLC)
     % MLC class show_problem method
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also best_individual.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
     
 %% Initialization
 param = MLC.parameters;
 
 %% Borders
-fprintf('======================== ')
-fprintf('xMLC')
-fprintf(' =======================\n')
-fprintf('\n')
+% Header
+fprintf('====================== ')
+fprintf('xMLC v%s',num2str(MLC.version))
+fprintf(' ====================\n')
 
 % Plot
 fprintf(['Name of the run : ',param.Name,'\n'])
@@ -24,17 +24,16 @@ fprintf(['Problem type : ',param.ProblemType,'\n'])
 if strcmp(param.ProblemType,'external') || strcmp(param.ProblemType,'LabView')
     fprintf(['Problem type : ',param.ProblemType,'\n'])
 end
-fprintf(['   Number of actuators       : ',num2str(param.ProblemParameters.OutputNumber),'\n'])
-fprintf(['   Number of control inputs  : ',num2str(param.ProblemParameters.InputNumber),'\n'])
+fprintf(['   Number of actuators : ',num2str(param.ProblemParameters.OutputNumber),'\n'])
+fprintf(['   Number of control inputs : ',num2str(param.ProblemParameters.InputNumber),'\n'])
 fprintf('\n')
 fprintf('Parameters : \n')
 fprintf(['   Population size : ',num2str(param.PopulationSize),'\n'])
-fprintf('\n')
-fprintf('Strategy : \n')
 fprintf('   Elitism : %i\n',param.Elitism)
-fprintf('   Crossover : %f\n',param.CrossoverProb)
-fprintf('   Mutation : %f\n',param.MutationProb)
-fprintf('   Replication : %f\n',param.ReplicationProb)
+fprintf('   Operator probabilities : \n')
+fprintf('      Crossover : %0.3f\n',param.CrossoverProb)
+fprintf('      Mutation : %0.3f\n',param.MutationProb)
+fprintf('      Replication : %0.3f\n',param.ReplicationProb)
 % Plot
 fprintf('\n')
 

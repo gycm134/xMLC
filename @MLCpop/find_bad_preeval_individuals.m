@@ -2,12 +2,12 @@ function idx = find_bad_preeval_individuals(pop,MLC_table,idx_bad_indivs)
     % FIND_BAD_PREEVAL_INDIVIDUALS find individuals whos pre-evaluation
     % gave NAN or INF values.
     %
-    % Guy Y. Cornejo Maceda, 02/15/2021
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also clean, replace_individuals.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Bad individuals
   bad_indivs = pop.individuals(idx_bad_indivs);

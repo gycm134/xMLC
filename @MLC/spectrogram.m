@@ -1,75 +1,99 @@
 function spectrogram(MLC)
-    % SPECTROGRAM Plots spetrogram for MLC
-    % Shows the spetrogram of the costs over the generations
+    % SPECTROGRAM Plots the distribution of the costs for each generation.
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
-    % See also convergence
+    % See also Pareto_diagram, learning_process, cost_distribution
 
-    % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+    % The MIT License (MIT)
 
 %% Parameters
-    NGen = MLC.generation;
-    nbins = 150;
-    PopSize = MLC.parameters.PopulationSize;
-    Jmin=MLC.parameters.ProblemParameters.Jmin;
-    Jmax=MLC.parameters.ProblemParameters.Jmax;
-    BadValue = MLC.parameters.BadValue;
+  NGen = MLC.generation;
+  PopSize = MLC.parameters.PopulationSize;
+  NJcomponents = numel(MLC.table.individuals(1).cost(1,:))-1;
+  % Plot the mean (or ...) of the different evaluation of one individual
+  EstimatePerformance = MLC.parameters.ProblemParameters.EstimatePerformance;
+  BadValue = MLC.parameters.BadValue;
+
+%% improve plot
+
+% All costs
+  J = zeros(PopSize,NGen);
+  Jorder = zeros(PopSize,NGen); % of creation
+  IndivType = zeros(PopSize,NGen);
+  Jcomponents = zeros(NJcomponents,PopSize,NGen);
+
+  for p=1:NGen
+      for q=1:PopSize
+          ind = MLC.population(p).individuals(q);
+          % Estimation type
+          Jind = cell2mat(MLC.table.individuals(ind).cost(:,1));
+          switch EstimatePerformance
+              case 'mean'
+                  J(q,p) = mean(Jind);
+                  for k=1:NJcomponents
+                      Jcomponents(k,q,p) = mean(cell2mat(MLC.table.individuals(ind).cost(:,k+1)));
+                  end
+              case 'last'
+                  J(q,p) = Jind(end);
+                  for k=1:NJcomponents
+                      Jcomponents(k,q,p) = MLC.table.individuals(ind).cost{end,k+1};
+                  end
+              case 'worst'
+                  J(q,p) = max(Jind);
+                  for k=1:NJcomponents
+                      Jcomponents(k,q,p) = max(cell2mat(MLC.table.individuals(ind).cost(:,k+1)));
+                  end
+              case 'best'
+                  J(q,p) = min(Jind);
+                  for k=1:NJcomponents
+                      Jcomponents(k,q,p) = min(cell2mat(MLC.table.individuals(ind).cost(:,k+1)));
+                  end
+          end
+          % Operation         
+          IT = MLC.population(p).operation{q}.type;
+          switch IT
+              case 'random'
+                  IndivType(q,p) = 0;
+              case 'Elitism'
+                  IndivType(q,p) = 1;
+              case 'crossover'
+                  IndivType(q,p) = 2;
+              case 'mutation'
+                  IndivType(q,p) = 3;
+              case 'replication'
+                  IndivType(q,p) = 4;
+          end
+      end
+%       [~,JorderIDX] = sort(MLC.population(p).individuals);
+      [~,Jorder(:,p)] = sort(MLC.population(p).CreationOrder);
+  end
+  
+ % Select bad individuals
+    isBad = J>(BadValue/10);
+    isNotBad = J<(BadValue/10);
+ % Max J
+    maxJ = max(J(not(isBad)));
+
+%% Plot spectrogram
+figure('Position',[371,369,408.4,338.8])
+  Jdistrib=J;
+  Jdistrib(isBad)=maxJ;
+  imagesc(log(Jdistrib));
+  %title
+    title(['J distribution (log10)'],'Interpreter','latex')
+  %legends
+    xlabel('Generation','Interpreter','latex')
+    ylabel('Individual','Interpreter','latex')
+  %yaxis
+    set(gca,'YDir','normal')
+  % colors
+    cmap = gray(1024);
+  % colormap
+    colormap(flip(cmap))
+    colorbar
+    ax=axis;
+    set(gca,'DataAspectRatio',[1/(ax(4)-ax(3)),1/(ax(2)-ax(1)),1])
 
 
-%% Preallocation
-J_gen = zeros(PopSize,NGen);
-
-
-for p=1:NGen
-    J_gen(:,p)=MLC.population(p).costs;
-end
-if isinf(Jmax)
-    Jmax = max(J_gen(J_gen<BadValue));
-end
-if Jmin<=1e-10
-    Jmin = 0.9*min(J_gen(:));
-end
-
-    ymin=0.5*Jmin;
-ymax=Jmax;
-y=linspace(log10(ymin),log10(ymax),nbins);
-x=1:NGen;
-
-bin_edges=10.^(y);
-Z = zeros(nbins,NGen);
-for p=1:NGen
-    Z(:,p)=histc(J_gen(:,p),bin_edges);
-end
-
-
-
-[X,Y]=meshgrid(x,10.^y);
-% Z=X.^2+Y.^2;
-Zmax = max(max(Z));
-%% Plot
-    figure
-    surf(X,Y,Z,'edgecolor','none')
-    view(2)
-
-    hold on
-    plot3(1:NGen,J_gen(1,:),Zmax*ones(1,NGen),'r--','LineWidth',1.5);
-    if MLC.parameters.ProblemParameters.Jmin>1e-10
-        plot3([1,NGen],Jmin*[1 1],[Zmax Zmax],'b-','LineWidth',1.5);
-    end
-    hold off
-    % legend
-        axis([1 NGen Jmin Jmax])
-        xlabel('$n$','Interpreter','latex')
-        ylabel('$log(J)$','Interpreter','latex')
-        grid on
-        box on
-        axis tight
-        set(gca,'Yscale','log')
-
-
-% color
-    wb=linspace(1,0,64);
-    cmp=[wb',wb',wb'];
-    colormap(cmp);

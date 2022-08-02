@@ -1,12 +1,12 @@
 function new_pop = replication(new_pop,pop,MLC_parameters,MLC_table,N_indivs)
     % REPLICATION operates one replication from pop to new_pop
     %
-    % Guy Y. Cornejo Maceda, 01/24/2020
+    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also Elitism, mutate, evolve_pop.
 
     % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % CC-BY-SA
+    % The MIT License (MIT)
 
 %% Selects the individual
     idx1 = selection_individual(MLC_parameters);
@@ -19,6 +19,6 @@ function new_pop = replication(new_pop,pop,MLC_parameters,MLC_table,N_indivs)
     new_pop.operation{N_indivs+1}.type = 'replication';
 %% Table update
     Indiv = MLC_table.individuals(idx);
-    Indiv.occurences = Indiv.occurences+1;
+    Indiv.occurrences = Indiv.occurrences+1;
     MLC_table.individuals(idx) = Indiv;
 end

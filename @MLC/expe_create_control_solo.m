@@ -4,12 +4,12 @@ function b_output=expe_create_control_solo(MLC,gen,IND)
   % a file containing the corresponding control law.
   % That file (b_solo.m) is to be used in an external evaluation.
   %
-  % Guy Y. Cornejo Maceda, 07/18/2020
+  % Guy Y. Cornejo Maceda, 2022/07/01
   %
   % See also expe_create_control_time, expe_create_control_select.
 
   % Copyright: 2020 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-  % CC-BY-SA
+  % The MIT License (MIT)
 
 %% Control law
     % Name
