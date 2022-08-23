@@ -86,9 +86,7 @@ try
     J = Ja + gamma(1)*Jb;
 
 %% Output
-    % first cylinder converged to 0 or not (at 10^-2)
-    Jc = max(a1(end-NPointsPeriod:end).^2+a2(end-NPointsPeriod:end).^2)<10^(-4);
-    J_out = {J,Ja,Jb,Jc};
+    J_out = {J,Ja,Jb};
 
 catch err
     J_out = {parameters.BadValue,parameters.BadValue,parameters.BadValue,0};

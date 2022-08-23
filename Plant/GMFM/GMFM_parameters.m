@@ -50,12 +50,12 @@ function parameters = GMFM_parameters()
         % Maximum evaluation time otherwise returns an bad value
         ProblemParameters.TmaxEv = 5; % otherwise parameters.BadValue is given
         % Problem definition
-        ProblemParameters.NPointsPeriod = 51; % Number of points per period
+        ProblemParameters.NPointsPeriod = 101; % Number of points per period
             time = linspace(ProblemParameters.T0,ProblemParameters.Tmax,...
                 ProblemParameters.NPointsPeriod*ProblemParameters.NPeriods+1);
         ProblemParameters.dt = time(2)-time(1);
         ProblemParameters.InitialCondition = [sqrt(0.1) 0 0 0]; % on the limit cycle of the unstable oscillator.
-        ProblemParameters.gamma = [0.01,0]; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
+        ProblemParameters.gamma = 0.01; % J = Ja + gamma(1)*Jb + gamma(2)*Jc
         
         % Round evaluation of control points and J
         ProblemParameters.RoundEval = 6;
@@ -157,7 +157,8 @@ function parameters = GMFM_parameters()
     parameters.MutationProb = 0.3;
     parameters.ReplicationProb = 0.1;
     % Other genetic parameters
-    parameters.MutationType = 'at_least_one';
+    parameters.MutationType = 'number_per_matrix';
+    parameters.MutationNumber = 1;
     parameters.MutationRate = 0.05;
     parameters.CrossoverPoints = 1;
     parameters.CrossoverMix = 1;

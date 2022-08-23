@@ -14,7 +14,7 @@ function parameters = Tanh_parameters()
 %% Problem parameters
 % Problem
     parameters.Name = 'Tanh_fitting'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
-    parameters.EvaluationFunction = 'tanh'; % 'GMFM' or 'FP' or 'none'
+    parameters.EvaluationFunction = 'Tanh'; % 'GMFM' or 'FP' or 'none'
     parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
     % Path for external evaluation
     parameters.PathExt = '/Costs'; % For external evaluations
@@ -162,7 +162,8 @@ function parameters = Tanh_parameters()
     parameters.MutationProb = 0.3;
     parameters.ReplicationProb = 0.1;
     % Other genetic parameters
-    parameters.MutationType = 'at_least_one';
+    parameters.MutationType = 'number_per_matrix';
+    parameters.MutationNumber = 1;
     parameters.MutationRate = 0.05;
     parameters.CrossoverPoints = 1;
     parameters.CrossoverMix = 1;

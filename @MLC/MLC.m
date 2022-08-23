@@ -38,7 +38,6 @@ classdef MLC < handle
             obj=load_octave(obj,Name,AuxName);
             save_matlab(obj,AuxName);
             save_octave(obj,AuxName);
-            obj = load_old(obj,folder,str);
             rename(obj,NewName);
         % Visualizations
             spectrogram(MLC);

@@ -13,7 +13,7 @@ function parameters = LandauOscillator_parameters()
 
 %% Problem parameters
 % Problem
-    parameters.Name = 'LO'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
+    parameters.Name = 'LandauOscillator'; % mlc.save_matlab('GenN'); ,mlc.load_matlab('Toy','GenN_moins_un')
     parameters.EvaluationFunction = 'LandauOscillator'; % 'GMFM' or 'FP' or 'none'
     parameters.ProblemType = 'MATLAB'; % 'external' or 'MATLAB' or 'LabView' or 'Dummy'
     % Path for external evaluation
@@ -32,7 +32,7 @@ function parameters = LandauOscillator_parameters()
             % hi(t)
             ProblemParameters.NumberTimeDependentFunctions = 0; % sin(wt)... multifrequency-forcing
             ProblemParameters.TimeDependentFunctions = {}; % syntax in MATLAB/Octave
-%             ProblemParameters.TimeDependentFunctions{2,:} = {}; % syntax in the problem (if null then comment)
+%             ProblemParameters.TimeDependentFunctions(2,:) = {}; % syntax in the problem (if null then comment)
         ProblemParameters.InputNumber = ProblemParameters.NumberSensors+ProblemParameters.NumberTimeDependentFunctions; 
         % Control Syntax
         Sensors = cell(1,ProblemParameters.NumberSensors); %*
@@ -159,7 +159,8 @@ function parameters = LandauOscillator_parameters()
     parameters.MutationProb = 0.3;
     parameters.ReplicationProb = 0.1;
     % Other genetic parameters
-    parameters.MutationType = 'at_least_one';
+    parameters.MutationType = 'number_per_matrix';
+    parameters.MutationNumber = 1;
     parameters.MutationRate = 0.05;
     parameters.CrossoverPoints = 1;
     parameters.CrossoverMix = 1;
