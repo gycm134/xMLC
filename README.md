@@ -1,6 +1,6 @@
 # xMLC
 # Guy Y. Cornejo Maceda, 2022/07/01
-# Copyright: 2021 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
+# Copyright: 2022 Guy Y. Cornejo Maceda (yoslan@hit.edu.cn)
 # MIT License
 
 
@@ -8,8 +8,24 @@ Machine Learning Control.
 How to use the xMLC software.
 This software is based on a Genetic Programming framework to build control laws for dynamical systems.
 
-## Publications
-Cornejo Maceda, G. Y. (2021). Gradient-enriched machine learning control exemplified for shear flows in simulations and experiments. <i>PhD Thesis,</i> Université Paris-Saclay. URL: http://www.theses.fr/2021UPAST036/document
+## For reference
+@Book{dbbs_mods_00071130,
+  author = 	{Cornejo Maceda, Guy Y.
+		and Lusseyran, Fran\c{c}ois
+		and Noack, Bernd R.},
+  editor = 	{Semaan, Richard
+		and Noack, Bernd R.},
+  title = 	{xMLC - A Toolkit for Machine Learning Control},
+  series = 	{Machine Learning Tools in Fluid Mechanics},
+  year = 	{2022},
+  edition = 	{First edition},
+  publisher = 	{Technische Universit{\"a}t Braunschweig},
+  address = 	{Braunschweig},
+  volume = 	{2},
+  doi = 	{10.24355/dbbs.084-202208220937-0},
+  url = 	{https://publikationsserver.tu-braunschweig.de/receive/dbbs_mods_00071130},
+  file = 	{:https://publikationsserver.tu-braunschweig.de/servlets/MCRFileNodeServlet/dbbs_derivate_00049782/2022_xMLC_CornejoMaceda.pdf:PDF}
+}
 
 ## Getting Started
 
@@ -30,12 +46,7 @@ The main folder should contain the following folders and files:
 - *MLC_tools/* contains functions and scripts that are not methods used by the MLC class objects.
 - *ODE_Solvers/* contains other functions such ODE solvers
 - *Plant/* contains all the problems and associated parameters. One folder for each problem. Default parameters are in *MLC_tools/*.
-- *Compatibility/* contains functions and scripts for MATLAB/Octave compatibility.
 - *save_runs/* contains the savings.
-
-### Compatibility
-To change the compatibility to MATLAB or Octave, go to the *Compatibility/* directory and execute the appropriate bash script.
-If you are on Windows, please copy the files in the MATLAB or Octave folder to the adequate ones.
 
 ### Initialization and run
 To start, run matlab in the main folder, then run Initialization.m to load the folders and class object.
@@ -115,8 +126,13 @@ See the CheatSheet.m file for a quick start.
 Version 0.10 - First public GitHub release.
 If you experience compatibility issues with previous versions, please contact the author.
 
-## Author
+## Authors
 
 * **Guy Y. Cornejo Maceda** 
-gy.cornejo.maceda@gmail.com
+Yoslan@hit.edu.cn
+* **François Lusseyran** 
+Francois.Lusseyran@limsi.fr
+* **Bernd R. Noack** 
+Bernd.Noack@hit.edu.cn
+
 
