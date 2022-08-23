@@ -1,15 +1,19 @@
 # xMLC
-# Guy Y. Cornejo Maceda, 2022/07/01
 # Copyright: 2022 Guy Y. Cornejo Maceda (yoslan@hit.edu.cn)
 # MIT License
 
+This software aims to make machine learning control (MLC) based on genetic programming easy for students to understand and to apply with a matlab program.
+It comes along with the book *xMLC---A Toolkit for Machine Learning Control* freely available on this link:
+https://doi.org/10.24355/dbbs.084-202208220937-0
+The user is invited to study the code along with the book as the latter contains:
+- detailed information on the MLC algorithm based on genetic programming;
+- a user's guide to get started with the code;
+- an application on the net drag reduction of the fluidic pinball;
+- a guide to adapt/inteface xMLC with your DNS solvers and experiments.
 
-Machine Learning Control.
-How to use the xMLC software.
-This software is based on a Genetic Programming framework to build control laws for dynamical systems.
 
 ## For reference
-@Book{dbbs_mods_00071130,
+@Book{CornejoMaceda2022book,
   author = 	{Cornejo Maceda, Guy Y.
 		and Lusseyran, Fran\c{c}ois
 		and Noack, Bernd R.},
@@ -36,7 +40,7 @@ Unzip the tar.gz file.
 The software needs MATLAB or Octave.
 No additional packages are needed.
 This version has been developped on MATLAB version 9.5.0.944444 (R2018b) and Octave version 4.2.2.
-Please contact the author (gy.cornejo.maceda@gmail.com) in case of error.
+Please contact the author (yoslan@hit.edu.cn) in case of error.
 
 ### Content
 The main folder should contain the following folders and files:
@@ -124,7 +128,7 @@ See the CheatSheet.m file for a quick start.
 ## Versioning
 
 Version 0.10 - First public GitHub release.
-If you experience compatibility issues with previous versions, please contact the author.
+If you experience compatibility issues with previous versions, please contact the first author.
 
 ## Authors
 
