@@ -1,13 +1,12 @@
 function a = readmylisp_to_evaluate(expression,MLC_parameters,to_export)
     % READMYLISP_TO_EVALUATE translates a lisp expression in a MATLAB string expresion.
     %
-    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also read, mat2lisp, simplify_my_LISP.
 
-    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % The MIT License (MIT)
-    % inspired by Thomas Duriez
+    % Copyright (C) 2015-2019 Thomas Duriez.
+    % This file is part of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
+
 
 %% Arguments
     if nargin<3,to_export = 0;end
