@@ -6,12 +6,12 @@ function [idx,already_exist,MLC_table] = add_indiv(MLC_table,MLC_parameters,indi
     % already_exist gives 1 if the string expression has already been explored
     % otherwise it gives 0
     %
-    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also MLC, MLCpop, MLCind.
 
-    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % The MIT License (MIT)
+    % Copyright (C) 2015-2019 Thomas Duriez.
+    % This file is adapted from @MLCtable/add_individual.m of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
+
 
 %% Parameters
   CrossGenRemoval = MLC_parameters.CrossGenRemoval;
