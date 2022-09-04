@@ -2,7 +2,7 @@
 # Copyright: 2022 Guy Y. Cornejo Maceda (yoslan@hit.edu.cn)
 # MIT License
 
-This software aims to make machine learning control (MLC) based on genetic programming easy for students to understand and to apply with a matlab program.
+This software aims to make machine learning control (MLC) based on linear genetic programming easy for students to understand and to apply with a matlab program.
 It comes along with the book *xMLC---A Toolkit for Machine Learning Control* freely available on this link:
 https://doi.org/10.24355/dbbs.084-202208220937-0
 The user is invited to study the code along with the book as the latter contains:
@@ -11,6 +11,7 @@ The user is invited to study the code along with the book as the latter contains
 - an application on the net drag reduction of the fluidic pinball;
 - a guide to adapt/inteface xMLC with your DNS solvers and experiments.
 
+xMLC is a fork of OpenMLC-MATLAB-2 (https://github.com/tduriez/OpenMLC-Matlab-2) by T. Duriez, an implementation of MLC based on tree-based genetic programming.
 
 ## For reference
 @Book{CornejoMaceda2022book,
