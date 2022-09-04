@@ -3,12 +3,11 @@ function new_pop = evolve_pop(pop,MLC_parameters,MLC_table,NbIndividuals)
     % The new individuals are generated thanks to the genetic operators and stored
     % in the table
     %
-    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also create_pop, evaluate_pop, MLCpop.
 
-    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % The MIT License (MIT)
+    %   Copyright (C) 2015-2017 Thomas Duriez.
+    %   This file is adapted from @MLCpop/evolve.m of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
 
 %% Arguments
 if nargin<4, NbIndividuals=size(pop.individuals,1);end
