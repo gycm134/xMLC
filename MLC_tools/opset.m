@@ -50,8 +50,8 @@ function ops=opset(range,to_export)
 %
 %   See also MLC, set_MLC_parameters
 %
-%   Copyright (C) 2013 Thomas Duriez (thomas.duriez@gmail.com)
-%   This file is part of the TUCOROM MLC Toolbox
+% Copyright (C) 2015-2019 Thomas Duriez.
+% This file is part of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
 
 %% Arguments
     if nargin<2,to_export=0;end
