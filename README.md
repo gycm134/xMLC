@@ -140,4 +140,6 @@ Francois.Lusseyran@limsi.fr
 * **Bernd R. Noack** 
 Bernd.Noack@hit.edu.cn
 
+## Acknowledgment
 
+* The author thanks Thomas Duriez (https://github.com/tduriez) and Ruying Li for the great help they provided by sharing their own code.
