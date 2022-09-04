@@ -5,7 +5,7 @@ function a = readmylisp_to_evaluate(expression,MLC_parameters,to_export)
     % See also read, mat2lisp, simplify_my_LISP.
 
     % Copyright (C) 2015-2019 Thomas Duriez.
-    % This file is part of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
+    % This file is adapted from MLC_tools/readmylisp_to_formal_MLC.m of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
 
 
 %% Arguments
