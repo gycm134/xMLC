@@ -1,12 +1,11 @@
 function q=my_log(x)
     % MY_LOG customized version of log
     %
-    % Guy Y. Cornejo Maceda, 2022/07/01
     %
     % See also my_div, my_log, opset.
 
-    % Copyright: 2022 Guy Cornejo Maceda (gy.cornejo.maceda@gmail.com)
-    % The MIT License (MIT)
+    % Copyright (C) 2015-2019 Thomas Duriez.
+    % This file is part of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
 
 protection = 1e-3;
 q=log10(abs(x).*(abs(x)>=protection)+protection*(abs(x)<protection));
