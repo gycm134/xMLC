@@ -7,7 +7,7 @@ function evaluate_population(MLC,Gen)
     % See also evaluate_population, evolve_population
 
     %   Copyright (C) 2015-2017 Thomas Duriez.
-    %   This file is part of the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
+    %   This file is adapted from the OpenMLC-Matlab-2 Toolbox. Distributed under GPL v3.
 
 %% Parameters
     ProblemType = MLC.parameters.ProblemType;
