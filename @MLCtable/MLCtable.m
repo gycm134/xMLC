@@ -44,7 +44,7 @@ classdef MLCtable < handle
             Nep = parameters.ControlLaw.ControlPointNumber;
             MI = parameters.ProblemParameters.OutputNumber;
             obj.control_points = NaN(Nind,Nep*MI);
-            obj.costlist = -1*ones(Nind,1);
+            obj.costlist = Inf*ones(Nind,1);
             obj.non_redundant=[];
         end
     end
